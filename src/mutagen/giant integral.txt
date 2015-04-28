@@ -1,0 +1,761 @@
+1/4 INT cos(t u/M) (1-cos(t/M)) cos((t+s)u/M) (1-cos((t+s)/N))
+1/4 INT cos(t u/M) cos((t+s)u/M) (1-cos(t/M)) (1-cos((t+s)/N))
+1/4 INT cos(t u/M) cos((t+s)u/M) (1-cos((t+s)/N)-cos(t/M)+cos(t/M)cos((t+s)/N))
+1/4 INT cos(tu/M)cos((t+s)u/M) - cos(tu/M)cos((t+s)u/M)cos((t+s)/N) - cos(tu/M)cos((t+s)u/M)cos(t/M) + cos(tu/M)cos((t+s)u/M)cos(t/M)cos((t+s)/N)
+1/4 INT (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M))/2 - 
+        (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M))/2 (ei ((t+s)/N) + ei -((t+s)/N))/2 - 
+        (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M))/2 (ei (t/M) + ei -(t/M))/2 + 
+        (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M))/2 (ei (t/M) + ei -(t/M))/2 (ei ((t+s)/N) + ei -((t+s)/N))/2
+1/16 INT (ei (tu/M) + ei -(tu/M)) (ei ((t+s)u/M) + ei -((t+s)u/M)) - 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M)) (ei ((t+s)/N) + ei -((t+s)/N)) - 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M)) (ei (t/M) + ei -(t/M)) + 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M))/2 (ei (t/M) + ei -(t/M)) (ei ((t+s)/N) + ei -((t+s)/N))
+1/16 INT (ei (tu/M) (ei ((t+s)u/M) + ei -((t+s)u/M)) + ei -(tu/M) (ei ((t+s)u/M) + ei -((t+s)u/M))) - 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M)) (ei ((t+s)/N) + ei -((t+s)/N)) - 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M)) (ei (t/M) + ei -(t/M)) + 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M))/2 (ei (t/M) + ei -(t/M)) (ei ((t+s)/N) + ei -((t+s)/N))
+1/16 INT (ei (tu/M) ei ((t+s)u/M) + ei (tu/M) ei -((t+s)u/M)) + (ei -(tu/M) ei ((t+s)u/M) + ei -(tu/M) ei -((t+s)u/M)) - 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M)) (ei ((t+s)/N) + ei -((t+s)/N)) - 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M)) (ei (t/M) + ei -(t/M)) + 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M))/2 (ei (t/M) + ei -(t/M)) (ei ((t+s)/N) + ei -((t+s)/N))
+1/16 INT (ei (tu/M + (t+s)u/M) + ei (tu/M - (t+s)u/M) + ei (-tu/M + (t+s)u/M) + ei (-tu/M - (t+s)u/M) - 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M)) (ei ((t+s)/N) + ei -((t+s)/N)) - 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M)) (ei (t/M) + ei -(t/M)) + 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M))/2 (ei (t/M) + ei -(t/M)) (ei ((t+s)/N) + ei -((t+s)/N))
+1/16 INT (ei (tu + (t+s)u)/M + ei (tu - (t+s)u)/M + ei (-tu + (t+s)u)/M + ei (-tu - (t+s)u)/M) - 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M)) (ei ((t+s)/N) + ei -((t+s)/N)) - 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M)) (ei (t/M) + ei -(t/M)) + 
+         (ei (tu/M) + ei -(tu/M))/2 (ei ((t+s)u/M) + ei -((t+s)u/M))/2 (ei (t/M) + ei -(t/M)) (ei ((t+s)/N) + ei -((t+s)/N))
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         (ei (tu/M) + ei -(tu/M)) (ei ((t+s)u/M) + ei -((t+s)u/M)) (ei ((t+s)/N) + ei -((t+s)/N))/2 - 
+         (ei (tu/M) + ei -(tu/M)) (ei ((t+s)u/M) + ei -((t+s)u/M)) (ei (t/M) + ei -(t/M))/2 + 
+         (ei (tu/M) + ei -(tu/M)) (ei ((t+s)u/M) + ei -((t+s)u/M)) (ei (t/M) + ei -(t/M)) (ei ((t+s)/N) + ei -((t+s)/N))/4
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         (ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M) (ei ((t+s)/N) + ei -((t+s)/N))/2 - 
+         (ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M) (ei (t/M) + ei -(t/M))/2 + 
+         (ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M) (ei (t/M) + ei -(t/M)) (ei ((t+s)/N) + ei -((t+s)/N))/4
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         (ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M) (ei ((t+s)/N) + ei -((t+s)/N))/2 - 
+         (ei (2t+s)u/M (ei (t/M) + ei -(t/M)) + ei -su/M (ei (t/M) + ei -(t/M)) + ei su/M (ei (t/M) + ei -(t/M)) + ei (-2t-s)u/M (ei (t/M) + ei -(t/M))) /2 + 
+         (ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M) (ei (t/M) + ei -(t/M)) (ei ((t+s)/N) + ei -((t+s)/N))/4
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         (ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M) (ei ((t+s)/N) + ei -((t+s)/N))/2 - 
+         (ei (2t+s)u/M ei (t/M) + ei (2t+s)u/M ei -(t/M) + ei -su/M ei (t/M) + ei -su/M ei -(t/M) + ei su/M ei (t/M) + ei su/M ei -(t/M) + ei (-2t-s)u/M ei (t/M) + ei (-2t-s)u/M ei -(t/M))/2 + 
+         (ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M) (ei (t/M) + ei -(t/M)) (ei ((t+s)/N) + ei -((t+s)/N))/4
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         (ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M) (ei ((t+s)/N) + ei -((t+s)/N))/2 - 
+         (ei ((2t+s)u/M + t/M) + ei ((2t+s)u/M - t/M) + ei (-su/M + t/M) + ei (-su/M - t/M) + ei (su/M + t/M) + ei (su/M - t/M) + ei ((-2t-s)u/M + t/M) + ei ((-2t-s)u/M - t/M))/2 + 
+         (ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M) (ei (t/M) + ei -(t/M)) (ei ((t+s)/N) + ei -((t+s)/N))/4
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         (ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M) (ei ((t+s)/N) + ei -((t+s)/N))/2 - 
+         (ei ((2t+s)u + t)/M + ei ((2t+s)u - t)/M + ei (-su + t)/M + ei (-su - t)/M + ei (su + t)/M + ei (su - t)/M + ei ((-2t-s)u + t)/M + ei ((-2t-s)u - t)/M)/2 + 
+         (ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M) (ei (t/M) + ei -(t/M)) (ei ((t+s)/N) + ei -((t+s)/N))/4
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         (ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M) (ei ((t+s)/N) + ei -((t+s)/N))/2 - 
+         (ei ((2t+s)u + t)/M + ei ((2t+s)u - t)/M + ei (-su + t)/M + ei (-su - t)/M + ei (su + t)/M + ei (su - t)/M + ei ((-2t-s)u + t)/M + ei ((-2t-s)u - t)/M)/2 + 
+         (ei ((2t+s)u + t)/M + ei ((2t+s)u - t)/M + ei (-su + t)/M + ei (-su - t)/M + ei (su + t)/M + ei (su - t)/M + ei ((-2t-s)u + t)/M + ei ((-2t-s)u - t)/M) (ei ((t+s)/N) + ei -((t+s)/N))/4
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         ((ei ((t+s)/N) + ei -((t+s)/N)) ei (2t+s)u/M + (ei ((t+s)/N) + ei -((t+s)/N)) ei -su/M + (ei ((t+s)/N) + ei -((t+s)/N)) ei su/M + (ei ((t+s)/N) + ei -((t+s)/N)) ei (-2t-s)u/M) /2 - 
+         (ei ((2t+s)u + t)/M + ei ((2t+s)u - t)/M + ei (-su + t)/M + ei (-su - t)/M + ei (su + t)/M + ei (su - t)/M + ei ((-2t-s)u + t)/M + ei ((-2t-s)u - t)/M)/2 + 
+         (ei ((2t+s)u + t)/M + ei ((2t+s)u - t)/M + ei (-su + t)/M + ei (-su - t)/M + ei (su + t)/M + ei (su - t)/M + ei ((-2t-s)u + t)/M + ei ((-2t-s)u - t)/M) (ei ((t+s)/N) + ei -((t+s)/N))/4
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         (ei ((t+s)/N) ei (2t+s)u/M + ei -((t+s)/N) ei (2t+s)u/M + ei -su/M ei ((t+s)/N) + ei -su/M ei -((t+s)/N) + ei su/M ei ((t+s)/N) + ei su/M ei -((t+s)/N) + ei (-2t-s)u/M ei ((t+s)/N) + ei (-2t-s)u/M ei -((t+s)/N)) /2 - 
+         (ei ((2t+s)u + t)/M + ei ((2t+s)u - t)/M + ei (-su + t)/M + ei (-su - t)/M + ei (su + t)/M + ei (su - t)/M + ei ((-2t-s)u + t)/M + ei ((-2t-s)u - t)/M)/2 + 
+         (ei ((2t+s)u + t)/M + ei ((2t+s)u - t)/M + ei (-su + t)/M + ei (-su - t)/M + ei (su + t)/M + ei (su - t)/M + ei ((-2t-s)u + t)/M + ei ((-2t-s)u - t)/M) (ei ((t+s)/N) + ei -((t+s)/N))/4
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         (ei ((t+s)/N + (2t+s)u/M) + ei (-(t+s)/N + (2t+s)u/M) + ei (-su/M + (t+s)/N) + ei (-su/M - (t+s)/N) + ei (su/M + (t+s)/N) + ei (su/M - (t+s)/N) + ei ((-2t-s)u/M + (t+s)/N) + ei ((-2t-s)u/M - (t+s)/N)) /2 - 
+         (ei ((2t+s)u + t)/M + ei ((2t+s)u - t)/M + ei (-su + t)/M + ei (-su - t)/M + ei (su + t)/M + ei (su - t)/M + ei ((-2t-s)u + t)/M + ei ((-2t-s)u - t)/M)/2 + 
+         (ei ((2t+s)u + t)/M + ei ((2t+s)u - t)/M + ei (-su + t)/M + ei (-su - t)/M + ei (su + t)/M + ei (su - t)/M + ei ((-2t-s)u + t)/M + ei ((-2t-s)u - t)/M) (ei ((t+s)/N) + ei -((t+s)/N))/4
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         (ei ((t+s)/N + (2t+s)u/M) + ei (-(t+s)/N + (2t+s)u/M) + ei (-su/M + (t+s)/N) + ei (-su/M - (t+s)/N) + ei (su/M + (t+s)/N) + ei (su/M - (t+s)/N) + ei ((-2t-s)u/M + (t+s)/N) + ei ((-2t-s)u/M - (t+s)/N)) /2 - 
+         (ei ((2t+s)u + t)/M + ei ((2t+s)u - t)/M + ei (-su + t)/M + ei (-su - t)/M + ei (su + t)/M + ei (su - t)/M + ei ((-2t-s)u + t)/M + ei ((-2t-s)u - t)/M)/2 + 
+         (ei ((2t+s)u + t)/M (ei ((t+s)/N) + ei -((t+s)/N)) + ei ((2t+s)u - t)/M (ei ((t+s)/N) + ei -((t+s)/N)) + ei (-su + t)/M (ei ((t+s)/N) + ei -((t+s)/N)) + ei (-su - t)/M (ei ((t+s)/N) + ei -((t+s)/N)) + ei (su + t)/M (ei ((t+s)/N) + ei -((t+s)/N)) + ei (su - t)/M (ei ((t+s)/N) + ei -((t+s)/N)) + ei ((-2t-s)u + t)/M (ei ((t+s)/N) + ei -((t+s)/N)) + ei ((-2t-s)u - t)/M (ei ((t+s)/N) + ei -((t+s)/N)))/4
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         (ei ((t+s)/N + (2t+s)u/M) + ei (-(t+s)/N + (2t+s)u/M) + ei (-su/M + (t+s)/N) + ei (-su/M - (t+s)/N) + ei (su/M + (t+s)/N) + ei (su/M - (t+s)/N) + ei ((-2t-s)u/M + (t+s)/N) + ei ((-2t-s)u/M - (t+s)/N)) /2 - 
+         (ei ((2t+s)u + t)/M + ei ((2t+s)u - t)/M + ei (-su + t)/M + ei (-su - t)/M + ei (su + t)/M + ei (su - t)/M + ei ((-2t-s)u + t)/M + ei ((-2t-s)u - t)/M)/2 + 
+         ((ei ((2t+s)u + t)/M ei ((t+s)/N) + ei ((2t+s)u + t)/M ei -((t+s)/N)) + (ei ((2t+s)u - t)/M ei ((t+s)/N) + ei ((2t+s)u - t)/M ei -((t+s)/N)) + 
+          (ei (-su + t)/M ei ((t+s)/N) + ei (-su + t)/M ei -((t+s)/N) + (ei (-su - t)/M ei ((t+s)/N) + ei (-su - t)/M ei -((t+s)/N)) + 
+          (ei (su + t)/M ei ((t+s)/N) + ei (su + t)/M ei -((t+s)/N)) + (ei (su - t)/M ei ((t+s)/N) + ei (su - t)/M ei -((t+s)/N)) + 
+          (ei ((-2t-s)u + t)/M ei ((t+s)/N) + ei ((-2t-s)u + t)/M ei -((t+s)/N)) + (ei ((-2t-s)u - t)/M ei ((t+s)/N) + ei ((-2t-s)u - t)/M ei -((t+s)/N)))/4
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         (ei ((t+s)/N + (2t+s)u/M) + ei (-(t+s)/N + (2t+s)u/M) + ei (-su/M + (t+s)/N) + ei (-su/M - (t+s)/N) + ei (su/M + (t+s)/N) + ei (su/M - (t+s)/N) + ei ((-2t-s)u/M + (t+s)/N) + ei ((-2t-s)u/M - (t+s)/N)) /2 - 
+         (ei ((2t+s)u + t)/M + ei ((2t+s)u - t)/M + ei (-su+t)/M + ei (-su-t)/M + ei (su+t)/M + ei (su-t)/M + ei ((-2t-s)u + t)/M + ei ((-2t-s)u - t)/M)/2 + 
+         (ei (((2t+s)u + t)/M + (t+s)/N) + ei (((2t+s)u + t)/M - (t+s)/N) + ei (((2t+s)u - t)/M + (t+s)/N) + ei (((2t+s)u - t)/M - (t+s)/N) + 
+          ei ((-su+t)/M + (t+s)/N) + ei ((-su+t)/M - (t+s)/N) + ei ((-su-t)/M + (t+s)/N) + ei ((-su-t)/M - (t+s)/N) + 
+          ei ((su+t)/M + (t+s)/N) + ei ((su+t)/M - (t+s)/N) + ei ((su-t)/M + (t+s)/N) + ei ((su-t)/M - (t+s)/N) + 
+          ei (((-2t-s)u + t)/M + (t+s)/N) + ei (((-2t-s)u + t)/M - (t+s)/N) + ei (((-2t-s)u - t)/M + (t+s)/N) + ei (((-2t-s)u - t)/M - (t+s)/N))/4
+1/16 INT ei (2t+s)u/M + ei -su/M + ei su/M + ei (-2t-s)u/M - 
+         (ei ((2t+s)u/M + (t+s)/N) + ei -((2t+s)u/M + (t+s)/N) + 
+          ei ((2t+s)u/M - (t+s)/N) + ei -((2t+s)u/M - (t+s)/N) + 
+          ei (    s u/M - (t+s)/N) + ei -(    s u/M - (t+s)/N) + 
+          ei (    s u/M + (t+s)/N) + ei -(    s u/M + (t+s)/N)) /2 - 
+         (ei ((2t+s)u + t)/M + ei ((2t+s)u - t)/M + ei (-su+t)/M + ei (-su-t)/M + ei (su+t)/M + ei (su-t)/M + ei ((-2t-s)u + t)/M + ei ((-2t-s)u - t)/M)/2 + 
+         (ei (((2t+s)u + t)/M + (t+s)/N) + ei (((2t+s)u + t)/M - (t+s)/N) + ei (((2t+s)u - t)/M + (t+s)/N) + ei (((2t+s)u - t)/M - (t+s)/N) + 
+          ei ((-su+t)/M + (t+s)/N) + ei ((-su+t)/M - (t+s)/N) + ei ((-su-t)/M + (t+s)/N) + ei ((-su-t)/M - (t+s)/N) + 
+          ei ((su+t)/M + (t+s)/N) + ei ((su+t)/M - (t+s)/N) + ei ((su-t)/M + (t+s)/N) + ei ((su-t)/M - (t+s)/N) + 
+          ei (((-2t-s)u + t)/M + (t+s)/N) + ei (((-2t-s)u + t)/M - (t+s)/N) + ei (((-2t-s)u - t)/M + (t+s)/N) + ei (((-2t-s)u - t)/M - (t+s)/N))/4
+
+          
+1/16 INT (ei  (2t+s)u/M +            ei      -s u/M + ei su/M + ei (-2t-s)u/M) -
+
+         (ei ((2t+s)u/M + (t+s)/N) + ei -((2t+s)u/M + (t+s)/N) + 
+          ei ((2t+s)u/M - (t+s)/N) + ei -((2t+s)u/M - (t+s)/N) + 
+          ei (    s u/M - (t+s)/N) + ei -(    s u/M - (t+s)/N) + 
+          ei (    s u/M + (t+s)/N) + ei -(    s u/M + (t+s)/N)) /2 -
+          
+         (ei ((2t+s)u + t)/M + ei -((2t+s)u + t)/M + 
+          ei ((2t+s)u - t)/M + ei -((2t+s)u - t)/M +
+          ei      (su - t)/M + ei      -(su - t)/M +
+          ei      (su + t)/M + ei      -(su + t)/M)/2 +
+          
+         (ei (((2t+s)u + t)/M + (t+s)/N) + ei (((2t+s)u + t)/M - (t+s)/N) + ei (((2t+s)u - t)/M + (t+s)/N) + ei (((2t+s)u - t)/M - (t+s)/N) + 
+          ei ((-su+t)/M + (t+s)/N) + ei ((-su+t)/M - (t+s)/N) + ei ((-su-t)/M + (t+s)/N) + ei ((-su-t)/M - (t+s)/N) + 
+          ei ((su+t)/M + (t+s)/N) + ei ((su+t)/M - (t+s)/N) + ei ((su-t)/M + (t+s)/N) + ei ((su-t)/M - (t+s)/N) + 
+          ei (((-2t-s)u + t)/M + (t+s)/N) + ei (((-2t-s)u + t)/M - (t+s)/N) + ei (((-2t-s)u - t)/M + (t+s)/N) + ei (((-2t-s)u - t)/M - (t+s)/N))/4
+          
+          
+1/16 INT (ei  (2t+s)u/M            + ei  -(2t+s)u/M + 
+          ei      s u/M            + ei      -s u/M) -
+
+         (ei ((2t+s)u/M + (t+s)/N) + ei -((2t+s)u/M + (t+s)/N) + 
+          ei ((2t+s)u/M - (t+s)/N) + ei -((2t+s)u/M - (t+s)/N) + 
+          ei (    s u/M - (t+s)/N) + ei -(    s u/M - (t+s)/N) + 
+          ei (    s u/M + (t+s)/N) + ei -(    s u/M + (t+s)/N)) /2 -
+          
+         (ei ((2t+s)u + t)/M + ei -((2t+s)u + t)/M + 
+          ei ((2t+s)u - t)/M + ei -((2t+s)u - t)/M +
+          ei      (su - t)/M + ei      -(su - t)/M +
+          ei      (su + t)/M + ei      -(su + t)/M)/2 +
+          
+         (ei (((2t+s)u + t)/M + (t+s)/N) + ei (((2t+s)u + t)/M - (t+s)/N) + ei (((2t+s)u - t)/M + (t+s)/N) + ei (((2t+s)u - t)/M - (t+s)/N) + 
+          ei ((-su+t)/M + (t+s)/N) + ei ((-su+t)/M - (t+s)/N) + ei ((-su-t)/M + (t+s)/N) + ei ((-su-t)/M - (t+s)/N) + 
+          ei ((su+t)/M + (t+s)/N) + ei ((su+t)/M - (t+s)/N) + ei ((su-t)/M + (t+s)/N) + ei ((su-t)/M - (t+s)/N) + 
+          ei (((-2t-s)u + t)/M + (t+s)/N) + ei (((-2t-s)u + t)/M - (t+s)/N) + ei (((-2t-s)u - t)/M + (t+s)/N) + ei (((-2t-s)u - t)/M - (t+s)/N))/4
+          
+          
+1/16 INT (ei  (2t+s)u/M            + ei  -(2t+s)u/M + 
+          ei      s u/M            + ei      -s u/M) -
+
+         (ei ((2t+s)u/M + (t+s)/N) + ei -((2t+s)u/M + (t+s)/N) + 
+          ei ((2t+s)u/M - (t+s)/N) + ei -((2t+s)u/M - (t+s)/N) + 
+          ei (    s u/M - (t+s)/N) + ei -(    s u/M - (t+s)/N) + 
+          ei (    s u/M + (t+s)/N) + ei -(    s u/M + (t+s)/N)) /2 -
+          
+         (ei ((2t+s)u + t)/M + ei -((2t+s)u + t)/M + 
+          ei ((2t+s)u - t)/M + ei -((2t+s)u - t)/M +
+          ei      (su - t)/M + ei      -(su - t)/M +
+          ei      (su + t)/M + ei      -(su + t)/M) / 2 +
+          
+         (ei (((2t+s)u + t)/M + (t+s)/N) + ei -(((2t+s)u + t)/M + (t+s)/N) + 
+          ei (((2t+s)u + t)/M - (t+s)/N) + ei -(((2t+s)u + t)/M - (t+s)/N) + 
+          ei (((2t+s)u - t)/M + (t+s)/N) + ei -(((2t+s)u - t)/M + (t+s)/N) + 
+          ei (((2t+s)u - t)/M - (t+s)/N) + ei -(((2t+s)u - t)/M - (t+s)/N) +
+          ei (    (s u - t)/M - (t+s)/N) + ei -(    (s u - t)/M - (t+s)/N) + 
+          ei (    (s u + t)/M + (t+s)/N) + ei -(    (s u - t)/M + (t+s)/N) + 
+          ei (    (s u + t)/M - (t+s)/N) + ei -(    (s u + t)/M - (t+s)/N) +
+          ei (    (s u - t)/M + (t+s)/N) + ei -(    (s u + t)/M + (t+s)/N)) / 4
+          
+          
+         (ei  (2t+s)u/M            - ei  -(2t+s)u/M) / 16i(2u/M) + 
+
+1/16 INT -(ei ((2t+s)u/M + (t+s)/N) + ei -((2t+s)u/M + (t+s)/N) + 
+           ei ((2t+s)u/M - (t+s)/N) + ei -((2t+s)u/M - (t+s)/N) + 
+           ei (    s u/M - (t+s)/N) + ei -(    s u/M - (t+s)/N) + 
+           ei (    s u/M + (t+s)/N) + ei -(    s u/M + (t+s)/N)) /2 -
+          
+          (ei ((2t+s)u + t)/M + ei -((2t+s)u + t)/M + 
+           ei ((2t+s)u - t)/M + ei -((2t+s)u - t)/M +
+           ei      (su - t)/M + ei      -(su - t)/M +
+           ei      (su + t)/M + ei      -(su + t)/M) / 2 +
+          
+          (ei (((2t+s)u + t)/M + (t+s)/N) + ei -(((2t+s)u + t)/M + (t+s)/N) + 
+           ei (((2t+s)u + t)/M - (t+s)/N) + ei -(((2t+s)u + t)/M - (t+s)/N) + 
+           ei (((2t+s)u - t)/M + (t+s)/N) + ei -(((2t+s)u - t)/M + (t+s)/N) + 
+           ei (((2t+s)u - t)/M - (t+s)/N) + ei -(((2t+s)u - t)/M - (t+s)/N) +
+           ei (    (s u - t)/M - (t+s)/N) + ei -(    (s u - t)/M - (t+s)/N) + 
+           ei (    (s u + t)/M + (t+s)/N) + ei -(    (s u - t)/M + (t+s)/N) + 
+           ei (    (s u + t)/M - (t+s)/N) + ei -(    (s u + t)/M - (t+s)/N) +
+           ei (    (s u - t)/M + (t+s)/N) + ei -(    (s u + t)/M + (t+s)/N)) / 4
+          
+          
+         (ei (2t+s)u/M - ei -(2t+s)u/M)  /  16i(2u/M) + 
+
+        -((ei ((2t+s)u/M + (t+s)/N) - ei -((2t+s)u/M + (t+s)/N))  /  i(2u/M + 1/N) + 
+          (ei ((2t+s)u/M - (t+s)/N) - ei -((2t+s)u/M - (t+s)/N))  /  i(2u/M - 1/N) + 
+          (ei (    s u/M - (t+s)/N) - ei -(    s u/M - (t+s)/N))  /  i(      -1/N) + 
+          (ei (    s u/M + (t+s)/N) - ei -(    s u/M + (t+s)/N))  /  i(       1/N)   ) / 32 +
+          
+1/16 INT -(ei ((2t+s)u + t)/M + ei -((2t+s)u + t)/M + 
+           ei ((2t+s)u - t)/M + ei -((2t+s)u - t)/M +
+           ei      (su - t)/M + ei      -(su - t)/M +
+           ei      (su + t)/M + ei      -(su + t)/M) / 2 +
+          
+          (ei (((2t+s)u + t)/M + (t+s)/N) + ei -(((2t+s)u + t)/M + (t+s)/N) + 
+           ei (((2t+s)u + t)/M - (t+s)/N) + ei -(((2t+s)u + t)/M - (t+s)/N) + 
+           ei (((2t+s)u - t)/M + (t+s)/N) + ei -(((2t+s)u - t)/M + (t+s)/N) + 
+           ei (((2t+s)u - t)/M - (t+s)/N) + ei -(((2t+s)u - t)/M - (t+s)/N) +
+           ei (    (s u - t)/M - (t+s)/N) + ei -(    (s u - t)/M - (t+s)/N) + 
+           ei (    (s u + t)/M + (t+s)/N) + ei -(    (s u - t)/M + (t+s)/N) + 
+           ei (    (s u + t)/M - (t+s)/N) + ei -(    (s u + t)/M - (t+s)/N) +
+           ei (    (s u - t)/M + (t+s)/N) + ei -(    (s u + t)/M + (t+s)/N)) / 4
+          
+          
+         (ei (2t+s)u/M - ei -(2t+s)u/M)  /  16i(2u/M) + 
+
+        -((ei ((2t+s)u/M + (t+s)/N) - ei -((2t+s)u/M + (t+s)/N))  /  i(2u/M + 1/N) + 
+          (ei ((2t+s)u/M - (t+s)/N) - ei -((2t+s)u/M - (t+s)/N))  /  i(2u/M - 1/N) + 
+          (ei (    s u/M - (t+s)/N) - ei -(    s u/M - (t+s)/N))  /  i(      -1/N) + 
+          (ei (    s u/M + (t+s)/N) - ei -(    s u/M + (t+s)/N))  /  i(       1/N)   ) / 32 +
+          
+         -((ei ((2t+s)u + t)/M - ei -((2t+s)u + t)/M)  /  i((2u+1)/M) + 
+           (ei ((2t+s)u - t)/M - ei -((2t+s)u - t)/M)  /  i((2u-1)/M) +
+           (ei      (su - t)/M - ei      -(su - t)/M)  /  i(    -1/M) +
+           (ei      (su + t)/M - ei      -(su + t)/M)  /  i(     1/M)   ) / 32 +
+          
+1/16 INT  (ei (((2t+s)u + t)/M + (t+s)/N) + ei -(((2t+s)u + t)/M + (t+s)/N) + 
+           ei (((2t+s)u + t)/M - (t+s)/N) + ei -(((2t+s)u + t)/M - (t+s)/N) + 
+           ei (((2t+s)u - t)/M + (t+s)/N) + ei -(((2t+s)u - t)/M + (t+s)/N) + 
+           ei (((2t+s)u - t)/M - (t+s)/N) + ei -(((2t+s)u - t)/M - (t+s)/N) +
+           ei (    (s u - t)/M - (t+s)/N) + ei -(    (s u - t)/M - (t+s)/N) + 
+           ei (    (s u + t)/M + (t+s)/N) + ei -(    (s u - t)/M + (t+s)/N) + 
+           ei (    (s u + t)/M - (t+s)/N) + ei -(    (s u + t)/M - (t+s)/N) +
+           ei (    (s u - t)/M + (t+s)/N) + ei -(    (s u + t)/M + (t+s)/N)) / 4
+          
+          
+         (ei (2t+s)u/M - ei -(2t+s)u/M)  /  16i(2u/M) + 
+
+        -((ei ((2t+s)u/M + (t+s)/N) - ei -((2t+s)u/M + (t+s)/N))  /  i(2u/M + 1/N) + 
+          (ei ((2t+s)u/M - (t+s)/N) - ei -((2t+s)u/M - (t+s)/N))  /  i(2u/M - 1/N) + 
+          (ei (    s u/M - (t+s)/N) - ei -(    s u/M - (t+s)/N))  /  i(      -1/N) + 
+          (ei (    s u/M + (t+s)/N) - ei -(    s u/M + (t+s)/N))  /  i(       1/N)   ) / 32 +
+          
+         -((ei ((2t+s)u + t)/M - ei -((2t+s)u + t)/M)  /  i((2u+1)/M) + 
+           (ei ((2t+s)u - t)/M - ei -((2t+s)u - t)/M)  /  i((2u-1)/M) +
+           (ei      (su - t)/M - ei      -(su - t)/M)  /  i(    -1/M) +
+           (ei      (su + t)/M - ei      -(su + t)/M)  /  i(     1/M)   ) / 32 +
+          
+          ((ei (((2t+s)u + t)/M + (t+s)/N) - ei -(((2t+s)u + t)/M + (t+s)/N))  /  i((2u+1)/M + 1/N) + 
+           (ei (((2t+s)u + t)/M - (t+s)/N) - ei -(((2t+s)u + t)/M - (t+s)/N))  /  i((2u+1)/M - 1/N) + 
+           (ei (((2t+s)u - t)/M + (t+s)/N) - ei -(((2t+s)u - t)/M + (t+s)/N))  /  i((2u-1)/M + 1/N) + 
+           (ei (((2t+s)u - t)/M - (t+s)/N) - ei -(((2t+s)u - t)/M - (t+s)/N))  /  i((2u-1)/M - 1/N) +
+           (ei (    (s u - t)/M - (t+s)/N) - ei -(    (s u - t)/M - (t+s)/N))  /  i(    -1/M - 1/N) + 
+           (ei (    (s u + t)/M + (t+s)/N) - ei -(    (s u - t)/M + (t+s)/N))  /  i(     1/M + 1/N) + 
+           (ei (    (s u + t)/M - (t+s)/N) - ei -(    (s u + t)/M - (t+s)/N))  /  i(     1/M - 1/N) +
+           (ei (    (s u - t)/M + (t+s)/N) - ei -(    (s u + t)/M + (t+s)/N))  /  i(    -1/M + 1/N)   ) / 64
+          
+*** N = Mv/u ***
+
+         (ei (2t+s)u/M - ei -(2t+s)u/M)  /  16i(2u/M) + 
+
+        -((ei ((2t+s)u/M + (t+s)/(Mv/u)) - ei -((2t+s)u/M + (t+s)/(Mv/u)))  /  i(2u/M + 1/(Mv/u)) + 
+          (ei ((2t+s)u/M - (t+s)/(Mv/u)) - ei -((2t+s)u/M - (t+s)/(Mv/u)))  /  i(2u/M - 1/(Mv/u)) + 
+          (ei (    s u/M - (t+s)/(Mv/u)) - ei -(    s u/M - (t+s)/(Mv/u)))  /  i(      -1/(Mv/u)) + 
+          (ei (    s u/M + (t+s)/(Mv/u)) - ei -(    s u/M + (t+s)/(Mv/u)))  /  i(       1/(Mv/u))   ) / 32 +
+          
+         -((ei ((2t+s)u + t)/M - ei -((2t+s)u + t)/M)  /  i((2u+1)/M) + 
+           (ei ((2t+s)u - t)/M - ei -((2t+s)u - t)/M)  /  i((2u-1)/M) +
+           (ei      (su - t)/M - ei      -(su - t)/M)  /  i(    -1/M) +
+           (ei      (su + t)/M - ei      -(su + t)/M)  /  i(     1/M)   ) / 32 +
+          
+          ((ei (((2t+s)u + t)/M + (t+s)/(Mv/u)) - ei -(((2t+s)u + t)/M + (t+s)/(Mv/u)))  /  i((2u+1)/M + 1/(Mv/u)) + 
+           (ei (((2t+s)u + t)/M - (t+s)/(Mv/u)) - ei -(((2t+s)u + t)/M - (t+s)/(Mv/u)))  /  i((2u+1)/M - 1/(Mv/u)) + 
+           (ei (((2t+s)u - t)/M + (t+s)/(Mv/u)) - ei -(((2t+s)u - t)/M + (t+s)/(Mv/u)))  /  i((2u-1)/M + 1/(Mv/u)) + 
+           (ei (((2t+s)u - t)/M - (t+s)/(Mv/u)) - ei -(((2t+s)u - t)/M - (t+s)/(Mv/u)))  /  i((2u-1)/M - 1/(Mv/u)) +
+           (ei (    (s u - t)/M - (t+s)/(Mv/u)) - ei -(    (s u - t)/M - (t+s)/(Mv/u)))  /  i(    -1/M - 1/(Mv/u)) + 
+           (ei (    (s u + t)/M + (t+s)/(Mv/u)) - ei -(    (s u - t)/M + (t+s)/(Mv/u)))  /  i(     1/M + 1/(Mv/u)) + 
+           (ei (    (s u + t)/M - (t+s)/(Mv/u)) - ei -(    (s u + t)/M - (t+s)/(Mv/u)))  /  i(     1/M - 1/(Mv/u)) +
+           (ei (    (s u - t)/M + (t+s)/(Mv/u)) - ei -(    (s u + t)/M + (t+s)/(Mv/u)))  /  i(    -1/M + 1/(Mv/u))   ) / 64
+          
+
+         (ei (2t+s)u/M - ei -(2t+s)u/M)  /  16i(2u/M) + 
+
+        -((ei ((2t+s)u/M + (t+s)(u/v)/M) - ei -((2t+s)u/M + (t+s)(u/v)/M))  /  i(2u/M + 1(u/v)/M) + 
+          (ei ((2t+s)u/M - (t+s)(u/v)/M) - ei -((2t+s)u/M - (t+s)(u/v)/M))  /  i(2u/M - 1(u/v)/M) + 
+          (ei (    s u/M - (t+s)(u/v)/M) - ei -(    s u/M - (t+s)(u/v)/M))  /  i(      -1(u/v)/M) + 
+          (ei (    s u/M + (t+s)(u/v)/M) - ei -(    s u/M + (t+s)(u/v)/M))  /  i(       1(u/v)/M)   ) / 32 +
+          
+         -((ei ((2t+s)u + t)/M - ei -((2t+s)u + t)/M)  /  i((2u+1)/M) + 
+           (ei ((2t+s)u - t)/M - ei -((2t+s)u - t)/M)  /  i((2u-1)/M) +
+           (ei      (su - t)/M - ei      -(su - t)/M)  /  i(    -1/M) +
+           (ei      (su + t)/M - ei      -(su + t)/M)  /  i(     1/M)   ) / 32 +
+          
+          ((ei (((2t+s)u + t)/M + (t+s)(u/v)/M) - ei -(((2t+s)u + t)/M + (t+s)(u/v)/M))  /  i((2u+1)/M + 1(u/v)/M) + 
+           (ei (((2t+s)u + t)/M - (t+s)(u/v)/M) - ei -(((2t+s)u + t)/M - (t+s)(u/v)/M))  /  i((2u+1)/M - 1(u/v)/M) + 
+           (ei (((2t+s)u - t)/M + (t+s)(u/v)/M) - ei -(((2t+s)u - t)/M + (t+s)(u/v)/M))  /  i((2u-1)/M + 1(u/v)/M) + 
+           (ei (((2t+s)u - t)/M - (t+s)(u/v)/M) - ei -(((2t+s)u - t)/M - (t+s)(u/v)/M))  /  i((2u-1)/M - 1(u/v)/M) +
+           (ei (    (s u - t)/M - (t+s)(u/v)/M) - ei -(    (s u - t)/M - (t+s)(u/v)/M))  /  i(    -1/M - 1(u/v)/M) + 
+           (ei (    (s u + t)/M + (t+s)(u/v)/M) - ei -(    (s u - t)/M + (t+s)(u/v)/M))  /  i(     1/M + 1(u/v)/M) + 
+           (ei (    (s u + t)/M - (t+s)(u/v)/M) - ei -(    (s u + t)/M - (t+s)(u/v)/M))  /  i(     1/M - 1(u/v)/M) +
+           (ei (    (s u - t)/M + (t+s)(u/v)/M) - ei -(    (s u + t)/M + (t+s)(u/v)/M))  /  i(    -1/M + 1(u/v)/M)   ) / 64
+          
+
+          2 sin (2t+s)u/M  /  16(2u/M) + 
+
+        -(2 sin (((2t+s)u + (t+s)(u/v))/M)  /  (2u + u/v)/M + 
+          2 sin (((2t+s)u - (t+s)(u/v))/M)  /  (2u - u/v)/M + 
+          2 sin ((    s u - (t+s)(u/v))/M)  /      -(u/v)/M + 
+          2 sin ((    s u + (t+s)(u/v))/M)  /       (u/v)/M   ) / 32 +
+          
+        -(2 sin ((2t+s)u + t)/M  /  (2u+1)/M + 
+          2 sin ((2t+s)u - t)/M  /  (2u-1)/M +
+          2 sin      (su - t)/M  /      -1/M +
+          2 sin      (su + t)/M  /       1/M   ) / 32 +
+          
+         (2 sin (((2t+s)u + t + (t+s)(u/v))/M)  /  (2u+1 + u/v)/M + 
+          2 sin (((2t+s)u + t - (t+s)(u/v))/M)  /  (2u+1 - u/v)/M + 
+          2 sin (((2t+s)u - t + (t+s)(u/v))/M)  /  (2u-1 + u/v)/M + 
+          2 sin (((2t+s)u - t - (t+s)(u/v))/M)  /  (2u-1 - u/v)/M +
+          2 sin ((    s u - t - (t+s)(u/v))/M)  /  (  -1 - u/v)/M + 
+          2 sin ((    s u + t + (t+s)(u/v))/M)  /  (   1 + u/v)/M + 
+          2 sin ((    s u + t - (t+s)(u/v))/M)  /  (   1 - u/v)/M +
+          2 sin ((    s u - t + (t+s)(u/v))/M)  /  (  -1 + u/v)/M   ) / 64
+
+
+          2 sin ((2t+2s)u - su)/M  /  16(2u/M) + 
+
+        -(2 sin (((2t+2s)u - su + (t+s)(u/v))/M)  /  (2u + u/v)/M + 
+          2 sin (((2t+2s)u - su - (t+s)(u/v))/M)  /  (2u - u/v)/M + 
+          2 sin ((     s u      - (t+s)(u/v))/M)  /      -(u/v)/M + 
+          2 sin ((     s u      + (t+s)(u/v))/M)  /       (u/v)/M   ) / 32 +
+          
+        -(2 sin ((2t+2s)u - su + t)/M  /  (2u+1)/M + 
+          2 sin ((2t+2s)u - su - t)/M  /  (2u-1)/M +
+          2 sin            (su - t)/M  /      -1/M +
+          2 sin            (su + t)/M  /       1/M   ) / 32 +
+          
+         (2 sin (((2t+2s)u - su + t + (t+s)(u/v))/M)  /  (2u+1 + u/v)/M + 
+          2 sin (((2t+2s)u - su + t - (t+s)(u/v))/M)  /  (2u+1 - u/v)/M + 
+          2 sin (((2t+2s)u - su - t + (t+s)(u/v))/M)  /  (2u-1 + u/v)/M + 
+          2 sin (((2t+2s)u - su - t - (t+s)(u/v))/M)  /  (2u-1 - u/v)/M +
+          2 sin ((     s u      - t - (t+s)(u/v))/M)  /  (  -1 - u/v)/M + 
+          2 sin ((     s u      + t + (t+s)(u/v))/M)  /  (   1 + u/v)/M + 
+          2 sin ((     s u      + t - (t+s)(u/v))/M)  /  (   1 - u/v)/M +
+          2 sin ((     s u      - t + (t+s)(u/v))/M)  /  (  -1 + u/v)/M   ) / 64
+
+
+          2 sin ((t+s)2u/M - su/M)  /  16(2u/M) + 
+
+        -(2 sin ((t+s)2u/M + (t+s)(u/v)/M - su/M)  /  (2u + u/v)/M + 
+          2 sin ((t+s)2u/M - (t+s)(u/v)/M - su/M)  /  (2u - u/v)/M + 
+          2 sin (     su/M - (t+s)(u/v)/M)         /      -(u/v)/M + 
+          2 sin (     su/M + (t+s)(u/v)/M)         /       (u/v)/M   ) / 32 +
+          
+        -(2 sin ((t+s)2u/M + (t+s)/M - su/M + t/M - (t+s)/M)  /  (2u+1)/M + 
+          2 sin ((t+s)2u/M - (t+s)/M - su/M - t/M + (t+s)/M)  /  (2u-1)/M +
+          2 sin                       (su/M - t/M)            /      -1/M +
+          2 sin                       (su/M + t/M)            /       1/M   ) / 32 +
+          
+         (2 sin (((t+s)2u - su + t + (t+s)(u/v) + (t+s) - (t+s)))/M  /  (2u+1 + u/v)/M + 
+          2 sin (((t+s)2u - su + t - (t+s)(u/v) + (t+s) - (t+s)))/M  /  (2u+1 - u/v)/M + 
+          2 sin (((t+s)2u - su - t + (t+s)(u/v) - (t+s) + (t+s)))/M  /  (2u-1 + u/v)/M + 
+          2 sin (((t+s)2u - su - t - (t+s)(u/v) - (t+s) + (t+s)))/M  /  (2u-1 - u/v)/M +
+          2 sin ((          su - t - (t+s)(u/v) - (t+s) + (t+s)))/M  /  (  -1 - u/v)/M + 
+          2 sin ((          su + t + (t+s)(u/v) + (t+s) - (t+s)))/M  /  (   1 + u/v)/M + 
+          2 sin ((          su + t - (t+s)(u/v) + (t+s) - (t+s)))/M  /  (   1 - u/v)/M +
+          2 sin ((          su - t + (t+s)(u/v) - (t+s) + (t+s)))/M  /  (  -1 + u/v)/M   ) / 64
+
+
+          2 sin ((t+s)2u/M - su/M)  /  16(2u/M) + 
+
+        -(2 sin ( (t+s)(2u + (u/v))/M - su/M)  /  (2u + u/v)/M + 
+          2 sin ( (t+s)(2u - (u/v))/M - su/M)  /  (2u - u/v)/M + 
+          2 sin (-(t+s)      (u/v) /M + su/M)  /      -(u/v)/M + 
+          2 sin ( (t+s)      (u/v) /M + su/M)  /       (u/v)/M   ) / 32 +
+          
+        -(2 sin ((t+s)(2u + 1) + t - su - (t+s))/M  /  (2u+1)/M + 
+          2 sin ((t+s)(2u - 1) - t - su + (t+s))/M  /  (2u-1)/M +
+          2 sin ((t+s)(    -1) - t + su + (t+s))/M  /      -1/M +
+          2 sin ((t+s)(     1) + t + su - (t+s))/M  /       1/M   ) / 32 +
+          
+         (2 sin (((t+s)(2u+1 + (u/v)) - su + t - (t+s)))/M  /  (2u+1 + u/v)/M + 
+          2 sin (((t+s)(2u+1 - (u/v)) - su + t - (t+s)))/M  /  (2u+1 - u/v)/M + 
+          2 sin (((t+s)(2u-1 + (u/v)) - su - t + (t+s)))/M  /  (2u-1 + u/v)/M + 
+          2 sin (((t+s)(2u-1 - (u/v)) - su - t + (t+s)))/M  /  (2u-1 - u/v)/M +
+          2 sin (((t+s)(  -1 - (u/v)) + su - t + (t+s)))/M  /  (  -1 - u/v)/M + 
+          2 sin (((t+s)(   1 + (u/v)) + su + t - (t+s)))/M  /  (   1 + u/v)/M + 
+          2 sin (((t+s)(   1 - (u/v)) + su + t - (t+s)))/M  /  (   1 - u/v)/M +
+          2 sin (((t+s)(  -1 + (u/v)) + su - t + (t+s)))/M  /  (  -1 + u/v)/M   ) / 64
+
+
+          2 sin (t(2u) + su)/M  /  16(2u/M) + 
+
+        -(2 sin (t(2u + u/v) + su + su/v)/M  /  (2u + u/v)/M + 
+          2 sin (t(2u - u/v) + su - su/v)/M  /  (2u - u/v)/M + 
+          2 sin (t(     u/v) + su + su/v)/M  /       (u/v)/M + 
+          2 sin (t(    -u/v) + su - su/v)/M  /      -(u/v)/M   ) / 32 +
+          
+        -(2 sin (t(2u + 1) - su)/M  /  (2u+1)/M + 
+          2 sin (t(2u - 1) - su)/M  /  (2u-1)/M +
+          2 sin (t(     1) + su)/M  /       1/M +
+          2 sin (t(    -1) + su)/M  /      -1/M   ) / 32 +
+          
+         (2 sin (t(2u+1 + u/v) + su + su/v)/M  /  (2u+1 + u/v)/M + 
+          2 sin (t(2u+1 - u/v) + su - su/v)/M  /  (2u+1 - u/v)/M + 
+          2 sin (t(2u-1 + u/v) + su + su/v)/M  /  (2u-1 + u/v)/M + 
+          2 sin (t(2u-1 - u/v) + su - su/v)/M  /  (2u-1 - u/v)/M + 
+          2 sin (t(   1 + u/v) + su + su/v)/M  /  (   1 + u/v)/M + 
+          2 sin (t(   1 - u/v) + su - su/v)/M  /  (   1 - u/v)/M +
+          2 sin (t(  -1 + u/v) + su + su/v)/M  /  (  -1 + u/v)/M +
+          2 sin (t(  -1 - u/v) + su - su/v)/M  /  (  -1 - u/v)/M   ) / 64
+ 
+*** a = M pi ***
+
+          2 sin ((M pi)(2u) + su)/M  /  16(2u/M) + 
+
+        -(2 sin ((M pi)(2u + u/v) + su + su/v)/M  /  (2u + u/v)/M + 
+          2 sin ((M pi)(2u - u/v) + su - su/v)/M  /  (2u - u/v)/M + 
+          2 sin ((M pi)(     u/v) + su + su/v)/M  /       (u/v)/M + 
+          2 sin ((M pi)(    -u/v) + su - su/v)/M  /      -(u/v)/M   ) / 32 +
+          
+        -(2 sin ((M pi)(2u + 1) - su)/M  /  (2u+1)/M + 
+          2 sin ((M pi)(2u - 1) - su)/M  /  (2u-1)/M +
+          2 sin ((M pi)(     1) + su)/M  /       1/M +
+          2 sin ((M pi)(    -1) + su)/M  /      -1/M   ) / 32 +
+          
+         (2 sin ((M pi)(2u+1 + u/v) + su + su/v)/M  /  (2u+1 + u/v)/M + 
+          2 sin ((M pi)(2u+1 - u/v) + su - su/v)/M  /  (2u+1 - u/v)/M + 
+          2 sin ((M pi)(2u-1 + u/v) + su + su/v)/M  /  (2u-1 + u/v)/M + 
+          2 sin ((M pi)(2u-1 - u/v) + su - su/v)/M  /  (2u-1 - u/v)/M + 
+          2 sin ((M pi)(   1 + u/v) + su + su/v)/M  /  (   1 + u/v)/M + 
+          2 sin ((M pi)(   1 - u/v) + su - su/v)/M  /  (   1 - u/v)/M +
+          2 sin ((M pi)(  -1 + u/v) + su + su/v)/M  /  (  -1 + u/v)/M +
+          2 sin ((M pi)(  -1 - u/v) + su - su/v)/M  /  (  -1 - u/v)/M   ) / 64
+ 
+
+          2 sin (su/M)  /  16(2u/M) + 
+
+        -(2 sin ((M pi)(2u + u/v) + su + su/v)/M  /  (2u + u/v)/M + 
+          2 sin ((M pi)(2u - u/v) + su - su/v)/M  /  (2u - u/v)/M + 
+          2 sin ((M pi)(     u/v) + su + su/v)/M  /       (u/v)/M + 
+          2 sin ((M pi)(    -u/v) + su - su/v)/M  /      -(u/v)/M   ) / 32 +
+          
+        -(2 sin ((M pi)(2u + 1) - su)/M  /  (2u+1)/M + 
+          2 sin ((M pi)(2u - 1) - su)/M  /  (2u-1)/M +
+          2 sin ((M pi)(     1) + su)/M  /       1/M +
+          2 sin ((M pi)(    -1) + su)/M  /      -1/M   ) / 32 +
+          
+         (2 sin ((M pi)(2u+1 + u/v) + su + su/v)/M  /  (2u+1 + u/v)/M + 
+          2 sin ((M pi)(2u+1 - u/v) + su - su/v)/M  /  (2u+1 - u/v)/M + 
+          2 sin ((M pi)(2u-1 + u/v) + su + su/v)/M  /  (2u-1 + u/v)/M + 
+          2 sin ((M pi)(2u-1 - u/v) + su - su/v)/M  /  (2u-1 - u/v)/M + 
+          2 sin ((M pi)(   1 + u/v) + su + su/v)/M  /  (   1 + u/v)/M + 
+          2 sin ((M pi)(   1 - u/v) + su - su/v)/M  /  (   1 - u/v)/M +
+          2 sin ((M pi)(  -1 + u/v) + su + su/v)/M  /  (  -1 + u/v)/M +
+          2 sin ((M pi)(  -1 - u/v) + su - su/v)/M  /  (  -1 - u/v)/M   ) / 64
+ 
+
+          2 sin (su/M)  /  16(2u/M) + 
+
+        -( 2 sin ( pi u/v + su/M + (su/v)/M)  /  (2u + u/v)/M + 
+           2 sin (-pi u/v + su/M - (su/v)/M)  /  (2u - u/v)/M + 
+          -2 sin ( pi u/v + su/M + (su/v)/M)  /       (u/v)/M + 
+          -2 sin (-pi u/v + su/M - (su/v)/M)  /      -(u/v)/M   ) / 32 +
+          
+        -(2 sin ((M pi)(2u + 1) - su)/M  /  (2u+1)/M + 
+          2 sin ((M pi)(2u - 1) - su)/M  /  (2u-1)/M +
+          2 sin ((M pi)(     1) + su)/M  /       1/M +
+          2 sin ((M pi)(    -1) + su)/M  /      -1/M   ) / 32 +
+          
+         (2 sin ((M pi)(2u+1 + u/v) + su + su/v)/M  /  (2u+1 + u/v)/M + 
+          2 sin ((M pi)(2u+1 - u/v) + su - su/v)/M  /  (2u+1 - u/v)/M + 
+          2 sin ((M pi)(2u-1 + u/v) + su + su/v)/M  /  (2u-1 + u/v)/M + 
+          2 sin ((M pi)(2u-1 - u/v) + su - su/v)/M  /  (2u-1 - u/v)/M + 
+          2 sin ((M pi)(   1 + u/v) + su + su/v)/M  /  (   1 + u/v)/M + 
+          2 sin ((M pi)(   1 - u/v) + su - su/v)/M  /  (   1 - u/v)/M +
+          2 sin ((M pi)(  -1 + u/v) + su + su/v)/M  /  (  -1 + u/v)/M +
+          2 sin ((M pi)(  -1 - u/v) + su - su/v)/M  /  (  -1 - u/v)/M   ) / 64
+ 
+
+          2 sin (su/M)  /  16(2u/M) + 
+
+        -( 2 sin ( pi u/v + su/M + (su/v)/M)  /  (2u + u/v)/M + 
+           2 sin (-pi u/v + su/M - (su/v)/M)  /  (2u - u/v)/M + 
+          -2 sin ( pi u/v + su/M + (su/v)/M)  /       (u/v)/M + 
+          -2 sin (-pi u/v + su/M - (su/v)/M)  /      -(u/v)/M   ) / 32 +
+          
+        -(-2 sin (su/M)  /  (2u+1)/M + 
+          -2 sin (su/M)  /  (2u-1)/M +
+          -2 sin (su/M)  /       1/M +
+          -2 sin (su/M)  /      -1/M   ) / 32 +
+          
+         (2 sin ((M pi)(2u+1 + u/v) + su + su/v)/M  /  (2u+1 + u/v)/M + 
+          2 sin ((M pi)(2u+1 - u/v) + su - su/v)/M  /  (2u+1 - u/v)/M + 
+          2 sin ((M pi)(2u-1 + u/v) + su + su/v)/M  /  (2u-1 + u/v)/M + 
+          2 sin ((M pi)(2u-1 - u/v) + su - su/v)/M  /  (2u-1 - u/v)/M + 
+          2 sin ((M pi)(   1 + u/v) + su + su/v)/M  /  (   1 + u/v)/M + 
+          2 sin ((M pi)(   1 - u/v) + su - su/v)/M  /  (   1 - u/v)/M +
+          2 sin ((M pi)(  -1 + u/v) + su + su/v)/M  /  (  -1 + u/v)/M +
+          2 sin ((M pi)(  -1 - u/v) + su - su/v)/M  /  (  -1 - u/v)/M   ) / 64
+ 
+
+          2 sin (su/M)  /  16(2u/M) + 
+
+        -( 2 sin ( pi u/v + su/M + (su/v)/M)  /  (2u + u/v)/M + 
+           2 sin (-pi u/v + su/M - (su/v)/M)  /  (2u - u/v)/M + 
+          -2 sin ( pi u/v + su/M + (su/v)/M)  /       (u/v)/M + 
+          -2 sin (-pi u/v + su/M - (su/v)/M)  /      -(u/v)/M   ) / 32 +
+          
+        -(-2 sin (su/M)  /  (2u+1)/M + 
+          -2 sin (su/M)  /  (2u-1)/M +
+          -2 sin (su/M)  /       1/M +
+          -2 sin (su/M)  /      -1/M   ) / 32 +
+          
+         (-2 sin ( pi u/v + su/M + (su/v)/M)  /  (2u+1 + u/v)/M + 
+          -2 sin (-pi u/v + su/M - (su/v)/M)  /  (2u+1 - u/v)/M + 
+          -2 sin ( pi u/v + su/M + (su/v)/M)  /  (2u-1 + u/v)/M + 
+          -2 sin (-pi u/v + su/M - (su/v)/M)  /  (2u-1 - u/v)/M + 
+          -2 sin ( pi u/v + su/M + (su/v)/M)  /  (   1 + u/v)/M + 
+          -2 sin (-pi u/v + su/M - (su/v)/M)  /  (   1 - u/v)/M +
+          -2 sin ( pi u/v + su/M + (su/v)/M)  /  (  -1 + u/v)/M +
+          -2 sin (-pi u/v + su/M - (su/v)/M)  /  (  -1 - u/v)/M   ) / 64
+ 
+
+           2M sin (su/M)  /  32u + 
+
+        -( 2M sin ( pi u/v + su/M + (su/v)/M)  /  (2u + u/v) + 
+           2M sin (-pi u/v + su/M - (su/v)/M)  /  (2u - u/v) + 
+          -2M sin ( pi u/v + su/M + (su/v)/M)  /       (u/v) + 
+          -2M sin (-pi u/v + su/M - (su/v)/M)  /      -(u/v)   ) / 32 +
+          
+        -(-2M sin (su/M)  /  (2u+1) + 
+          -2M sin (su/M)  /  (2u-1)   ) / 32 +
+          
+         (-2M sin ( pi u/v + su/M + (su/v)/M)  /  (2u+1 + u/v) + 
+          -2M sin (-pi u/v + su/M - (su/v)/M)  /  (2u+1 - u/v) + 
+          -2M sin ( pi u/v + su/M + (su/v)/M)  /  (2u-1 + u/v) + 
+          -2M sin (-pi u/v + su/M - (su/v)/M)  /  (2u-1 - u/v) + 
+          -2M sin ( pi u/v + su/M + (su/v)/M)  /  (   1 + u/v) + 
+          -2M sin (-pi u/v + su/M - (su/v)/M)  /  (   1 - u/v) +
+          -2M sin ( pi u/v + su/M + (su/v)/M)  /  (  -1 + u/v) +
+          -2M sin (-pi u/v + su/M - (su/v)/M)  /  (  -1 - u/v)   ) / 64
+ 
+
+           2M sin (su/M)  /  32u + 
+
+        -( 2M ( sin (pi u/v) cos ( (su/v)/M + su/M) + cos (pi u/v) sin ( (su/v)/M + su/M))  /  (2u + u/v) + 
+           2M (-sin (pi u/v) cos (-(su/v)/M + su/M) + cos (pi u/v) sin (-(su/v)/M + su/M))  /  (2u - u/v) + 
+          -2M ( sin (pi u/v) cos ( (su/v)/M + su/M) + cos (pi u/v) sin ( (su/v)/M + su/M))  /       (u/v) + 
+          -2M (-sin (pi u/v) cos (-(su/v)/M + su/M) + cos (pi u/v) sin (-(su/v)/M + su/M))  /      -(u/v)   ) / 32 +
+          
+        -(-2M sin (su/M)  /  (2u+1) + 
+          -2M sin (su/M)  /  (2u-1)   ) / 32 +
+          
+         (-2M sin ( pi u/v + (su/v)/M + su/M)  /  (2u+1 + u/v) + 
+          -2M sin (-pi u/v - (su/v)/M + su/M)  /  (2u+1 - u/v) + 
+          -2M sin ( pi u/v + (su/v)/M + su/M)  /  (2u-1 + u/v) + 
+          -2M sin (-pi u/v - (su/v)/M + su/M)  /  (2u-1 - u/v) + 
+          -2M sin ( pi u/v + (su/v)/M + su/M)  /  (   1 + u/v) + 
+          -2M sin (-pi u/v - (su/v)/M + su/M)  /  (   1 - u/v) +
+          -2M sin ( pi u/v + (su/v)/M + su/M)  /  (  -1 + u/v) +
+          -2M sin (-pi u/v - (su/v)/M + su/M)  /  (  -1 - u/v)   ) / 64
+ 
+
+           2M sin (su/M)  /  32u + 
+
+        -(-4uM ( sin (pi u/v) cos ( (su/v)/M + su/M) + cos (pi u/v) sin ( (su/v)/M + su/M))  /  (2uu/v + uu/vv) + 
+           4uM (-sin (pi u/v) cos (-(su/v)/M + su/M) + cos (pi u/v) sin (-(su/v)/M + su/M))  /  (2uu/v - uu/vv)   ) / 32 +
+          
+        -(-2M sin (su/M)  /  (2u+1) + 
+          -2M sin (su/M)  /  (2u-1)   ) / 32 +
+          
+         (-2M sin ( pi u/v + (su/v)/M + su/M)  /  (2u+1 + u/v) + 
+          -2M sin (-pi u/v - (su/v)/M + su/M)  /  (2u+1 - u/v) + 
+          -2M sin ( pi u/v + (su/v)/M + su/M)  /  (2u-1 + u/v) + 
+          -2M sin (-pi u/v - (su/v)/M + su/M)  /  (2u-1 - u/v) + 
+          -2M sin ( pi u/v + (su/v)/M + su/M)  /  (   1 + u/v) + 
+          -2M sin (-pi u/v - (su/v)/M + su/M)  /  (   1 - u/v) +
+          -2M sin ( pi u/v + (su/v)/M + su/M)  /  (  -1 + u/v) +
+          -2M sin (-pi u/v - (su/v)/M + su/M)  /  (  -1 - u/v)   ) / 64
+ 
+
+           2M sin (su/M)  /  32u + 
+
+        -(-4uM ( ( sin (pi u/v) cos ((su/v)/M) cos (su/M) - sin (pi u/v) sin ((su/v)/M) sin (su/M)))  /  (2uu/v + uu/vv) + 
+           4uM ( (-sin (pi u/v) cos ((su/v)/M) cos (su/M) - sin (pi u/v) sin ((su/v)/M) sin (su/M)))  /  (2uu/v - uu/vv) + 
+          -4uM ( cos (pi u/v) ( sin ((su/v)/M) cos (su/M) + cos ((su/v)/M) sin (su/M)))  /  (2uu/v + uu/vv) + 
+           4uM ( cos (pi u/v) (-sin ((su/v)/M) cos (su/M) + cos ((su/v)/M) sin (su/M)))  /  (2uu/v - uu/vv)   ) / 32 +
+          
+        -(-2M sin (su/M)  /  (2u+1) + 
+          -2M sin (su/M)  /  (2u-1)   ) / 32 +
+          
+         (-2M sin ( pi u/v + (su/v)/M + su/M)  /  (2u+1 + u/v) + 
+          -2M sin (-pi u/v - (su/v)/M + su/M)  /  (2u+1 - u/v) + 
+          -2M sin ( pi u/v + (su/v)/M + su/M)  /  (2u-1 + u/v) + 
+          -2M sin (-pi u/v - (su/v)/M + su/M)  /  (2u-1 - u/v) + 
+          -2M sin ( pi u/v + (su/v)/M + su/M)  /  (   1 + u/v) + 
+          -2M sin (-pi u/v - (su/v)/M + su/M)  /  (   1 - u/v) +
+          -2M sin ( pi u/v + (su/v)/M + su/M)  /  (  -1 + u/v) +
+          -2M sin (-pi u/v - (su/v)/M + su/M)  /  (  -1 - u/v)   ) / 64
+ 
+*** b = Mv/u pi - s ***
+
+         -2M sin (su/M)  /  32u + 
+
+        -(2M sin (su/M)  /  (2u + u/v) + 
+          2M sin (su/M)  /  (2u - u/v)   ) / 32 +
+          
+        -(2 sin ( v/u pi - 3su/M - s/M)  /  (2u+1)/M + 
+          2 sin ( v/u pi - 3su/M + s/M)  /  (2u-1)/M +
+          2 sin ( v/u pi +  su/M - s/M)  /       1/M +
+          2 sin (-v/u pi +  su/M + s/M)  /      -1/M   ) / 32 +
+          
+         (-2 sin ( v/u pi - su/M - s/M)  /  (2u+1 + u/v)/M + 
+          -2 sin ( v/u pi - su/M - s/M)  /  (2u+1 - u/v)/M + 
+          -2 sin (-v/u pi - su/M + s/M)  /  (2u-1 + u/v)/M + 
+          -2 sin (-v/u pi - su/M + s/M)  /  (2u-1 - u/v)/M + 
+          -2 sin ( v/u pi + su/M - s/M)  /  (   1 + u/v)/M + 
+          -2 sin ( v/u pi + su/M - s/M)  /  (   1 - u/v)/M +
+          -2 sin (-v/u pi + su/M + s/M)  /  (  -1 + u/v)/M +
+          -2 sin (-v/u pi + su/M + s/M)  /  (  -1 - u/v)/M   ) / 64
+ 
+*** a = M pi ***
+
+          2M sin (su/M)  /  32u + 
+
+        -( 2M sin ( pi u/v + su/M + (su/v)/M)  /  (2u + u/v) + 
+           2M sin (-pi u/v + su/M - (su/v)/M)  /  (2u - u/v) + 
+          -2M sin ( pi u/v + su/M + (su/v)/M)  /       (u/v) + 
+          -2M sin (-pi u/v + su/M - (su/v)/M)  /      -(u/v)   ) / 32 +
+          
+        -(-2M sin (su/M)  /  (2u+1) + 
+          -2M sin (su/M)  /  (2u-1)   ) / 32 +
+          
+         (-2M sin ( pi u/v + su/M + (su/v)/M)  /  (2u+1 + u/v) + 
+          -2M sin (-pi u/v + su/M - (su/v)/M)  /  (2u+1 - u/v) + 
+          -2M sin ( pi u/v + su/M + (su/v)/M)  /  (2u-1 + u/v) + 
+          -2M sin (-pi u/v + su/M - (su/v)/M)  /  (2u-1 - u/v) + 
+          -2M sin ( pi u/v + su/M + (su/v)/M)  /  (   1 + u/v) + 
+          -2M sin (-pi u/v + su/M - (su/v)/M)  /  (   1 - u/v) +
+          -2M sin ( pi u/v + su/M + (su/v)/M)  /  (  -1 + u/v) +
+          -2M sin (-pi u/v + su/M - (su/v)/M)  /  (  -1 - u/v)   ) / 64
+ 
+DIFF
+
+         -4M sin (su/M)  /  32u + 
+
+         -2M sin (su/M)  /  32(2u + u/v) + 
+          2M sin (pi u/v + (su/v)/M + su/M)      /  32(2u + u/v) + 
+
+         -2M sin (su/M)  /  32(2u - u/v) +
+         -2M sin (pi u/v + (su/v)/M - su/M)      /  32(2u - u/v) + 
+
+         -4M sin (pi u/v + (su/v)/M) cos (su/M)  /  32(u/v)  +
+
+         
+         
+u = v = 4         
+         
+(( 252M sin((10pi M - 5s)/M) +
+  -560M sin(( 9pi M - 4s)/M) +
+  -560M sin(( 9pi M - 5s)/M) +
+   315M sin(( 8pi M - 3s)/M) +
+  1260M sin(( 8pi M - 4s)/M) +
+   315M sin(( 8pi M - 5s)/M) +
+  -720M sin(( 7pi M - 3s)/M) +
+  -720M sin(( 7pi M - 4s)/M) +
+   420M sin(( 6pi M - 3s)/M) +
+  1260M sin(( 2pi M + 3s)/M) +
+  1260M sin(( 2pi M - 5s)/M) +
+ -5040M sin((  pi M + 4s)/M) +
+ -5040M sin((  pi M + 3s)/M) +
+ -5040M sin((  pi M - 4s)/M) +
+ -5040M sin((  pi M - 5s)/M) +
+  (2520pi cos(5s/M) + 10080pi cos(4s/M) + 2520pi cos(3s/M))*M +
+  -2520s  cos(5s/M) - 10080s  cos(4s/M) - 2520s  cos(3s/M)) / 20160 +
+ (252M sin((10pi M - 5s)/M) +
+ -560M sin(( 9pi M - 4s)/M) +
+ -560M sin(( 9pi M - 5s)/M) +
+  315M sin(( 8pi M - 3s)/M) +
+ 1260M sin(( 8pi M - 4s)/M) +
+  315M sin(( 8pi M - 5s)/M) +
+ -720M sin(( 7pi M - 3s)/M) +
+ -720M sin(( 7pi M - 4s)/M) +
+  420M sin(( 6pi M - 3s)/M) +
+ 1260M sin(( 2pi M + 3s)/M) +
+ 1260M sin(( 2pi M - 5s)/M) +
+-5040M sin((  pi M + 4s)/M) +
+-5040M sin((  pi M + 3s)/M) +
+-5040M sin((  pi M - 4s)/M) +
+-5040M sin((  pi M - 5s)/M) +
+  (2520pi cos(5s/M) + 10080pi cos(4s/M) + 2520pi cos(3s/M)) * M ) / 20160) / 4
+         
+((-252M sin(5s/M) +
+  -560M sin(4s/M) +
+  -560M sin(5s/M) +
+  -315M sin(3s/M) +
+ -1260M sin(4s/M) +
+  -315M sin(5s/M) +
+  -720M sin(3s/M) +
+  -720M sin(4s/M) +
+  -420M sin(3s/M) +
+  1260M sin(3s/M) +
+ -1260M sin(5s/M) +
+  5040M sin(4s/M) +
+  5040M sin(3s/M) +
+ -5040M sin(4s/M) +
+ -5040M sin(5s/M) +
+ -2520s  cos(5s/M) - 10080s  cos(4s/M) - 2520s  cos(3s/M)    ) / 20160 +
+ (-252M sin(5s/M) +
+  -560M sin(4s/M) +
+  -560M sin(5s/M) +
+  -315M sin(3s/M) +
+ -1260M sin(4s/M) +
+  -315M sin(5s/M) +
+  -720M sin(3s/M) +
+  -720M sin(4s/M) +
+  -420M sin(3s/M) +
+  1260M sin(3s/M) +
+ -1260M sin(5s/M) +
+  5040M sin(4s/M) +
+  5040M sin(3s/M) +
+ -5040M sin(4s/M) +
+ -5040M sin(5s/M) +
+  (2520pi cos(5s/M) + 10080pi cos(4s/M) + 2520pi cos(3s/M)) M +
+  (2520pi cos(5s/M) + 10080pi cos(4s/M) + 2520pi cos(3s/M)) M) / 20160) / 4
+      
+      
+((-252M sin(5s/M) +
+  -560M sin(5s/M) +
+  -315M sin(5s/M) +
+ -1260M sin(5s/M) +
+ -5040M sin(5s/M) +
+  -252M sin(5s/M) +
+  -560M sin(5s/M) +
+  -315M sin(5s/M) +
+ -1260M sin(5s/M) +
+ -5040M sin(5s/M) +
+ 
+  -560M sin(4s/M) +
+ -1260M sin(4s/M) +
+  -720M sin(4s/M) +
+  5040M sin(4s/M) +
+ -5040M sin(4s/M) +
+  -560M sin(4s/M) +
+ -1260M sin(4s/M) +
+  -720M sin(4s/M) +
+  5040M sin(4s/M) +
+ -5040M sin(4s/M) +
+ 
+  -315M sin(3s/M) +
+  -720M sin(3s/M) +
+  -420M sin(3s/M) +
+  1260M sin(3s/M) +
+  5040M sin(3s/M) +
+  -315M sin(3s/M) +
+  -720M sin(3s/M) +
+  -420M sin(3s/M) +
+  1260M sin(3s/M) +
+  5040M sin(3s/M) +
+  
+ -2520s  cos(5s/M) - 10080s  cos(4s/M) - 2520s  cos(3s/M)     +
+  (2520pi cos(5s/M) + 10080pi cos(4s/M) + 2520pi cos(3s/M)) M +
+  (2520pi cos(5s/M) + 10080pi cos(4s/M) + 2520pi cos(3s/M)) M) / 20160) / 4
+  
+  
+(-14854M  sin(5s/M) -  5080M  sin(4s/M) + 9690M  sin(3s/M) +  
+  -2520s  cos(5s/M) - 10080s  cos(4s/M) - 2520s  cos(3s/M) +
+  (5040pi cos(5s/M) + 20160pi cos(4s/M) + 5040pi cos(3s/M)) M) / 80640
+  
+  
+
+  

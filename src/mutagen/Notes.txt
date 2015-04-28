@@ -1,0 +1,1035 @@
+How is this whole thing going to go? What are the stages?
+- Decide on a final feature set
+-- Web or social media interaction? Maybe an Electric Sheep approach?
+-- Standalone and/or plugin?
+-- License policies and patents
+-- Involve thoughts about time estimates
+- Decide on a feature set for the prototype
+-- Needs to be good enough to complain about *before* settling on the
+   prototype's feature set -- how will this effect the project
+   schedule?
+-- Needs to be user friendly enough
+-- Needs to have simple ways to do extraordinary things
+-- Involve thoughts about time estimates
+- Decide how to run the campaign
+-- The spiel will be inspired by the planned feature set, and vice versa
+-- Find blogs
+-- Find forums
+-- Local tech meetups
+--- LittleDOCC
+--- That other coffee shop meetup
+-- Orchestrate the seed funding
+-- Tiers/rewards
+
+
+*Block Size
+*Representation
+
+Loris : Continuous Frequency, Noise Explicitly Modeled, Breakpoints
+DFT   : Discrete Frequency,   Noise Implicitly Modeled, Blocks
+Ph Voc: Continuous Frequency, Noise Implicitly Modeled, Blocks
+LPC   : Time,                 Noise Explicitly Modeled, Breakpoints?
+Grain : Time,                                           Blocks
+Raw   : Time,                                           Points
+
+Pitched / Unpitched
+Rich / Sparse
+
+Pitched, Rich:     Harmonic and maybe Noisy
+Unpitched, Rich:   Inharmonic and/or Noisy
+Pitched, Sparse:   Harmonic
+Unpitched, Sparse: Inharmonic
+
+Loris  : Sinusoids, Phase Locking, Noise Bands, Breakpoints, Evolution Rate, Order
+DFT    : Fourier Vectors, Evolution Rate, Order
+Ph Voc : Fourier Vectors, Phase Locking, Evolution Rate, Order
+LPC    : Poles, Residual, Evolution Rate, Order
+Grain  : Time Vectors, Grain Times, Order
+
+Sinusoid: Frequency, Amplitude, Phase
+Noise Band: Center Frequency, Bandwidth
+Breakpoint: Time, Other Objects
+Fourier Vector: Complex Amplitudes
+Time Vector: Amplitudes
+
+OPERATIONS
+Discard, Perturb, Invert, Reverse, Apply Envelope, Permute, Repeat,
+Warp, Resample, Threshold
+
+
+LICENSES
+========
+Loris - GPLv2 :(
+Vocoder - ???
+SPTK - MIT :)
+LTFAT - GPL (Matlab code)
+blitzwave - GPL :(
+
+
+PSEUDOCODE
+==========
+Input series x
+Input series length N
+Analysis window length M
+Grab window's worth
+FFT
+Find highest peak with parabolic interpolation
+Center of window is T
+From T-M to T+M run x through filter w[n] exp ipn/M or something
+Find highest peak in magnitude
+Figure out corresponding phase of sinusoid in window <-- How to do this?
+Subtract windowed sinusoid from x to get new residual x
+Do this until energy in window falls below some threshold
+Shift window by M/2
+
+
+INT ei -wt 1/2 (1 - cos 2pt/L) cos (wt + f) dt
+1/2 INT (ei -wt - ei -wt cos 2pt/L) cos (wt + f) dt
+1/2 INT ei -wt cos (wt + f) - ei -wt cos 2pt/L cos (wt + f) dt
+1/2 INT ei -wt 1/2 (ei (wt+f) + ei -(wt+f)) - ei -wt cos 2pt/L 1/2 (ei (wt+f) + ei -(wt+f)) dt
+1/4 INT ei -wt (ei (wt+f) + ei -(wt+f)) - ei -wt cos 2pt/L (ei (wt+f) + ei -(wt+f)) dt
+1/4 INT (ei -wt ei (wt+f) + ei -wt ei -(wt+f)) - (ei -wt cos 2pt/L ei (wt+f) + ei -wt cos 2pt/L ei -(wt+f)) dt
+1/4 INT ei f + ei -(2wt+f) - cos 2pt/L ei f - cos 2pt/L ei -(2wt+f) dt
+1/4 INT ei f + ei -(2wt+f) - 1/2 (ei 2pt/L + ei -2pt/L) ei f - 1/2 (ei 2pt/L + ei -2pt/L) ei -(2wt+f) dt
+1/4 INT ei f + ei -(2wt+f) - 1/2 (ei 2pt/L ei f + ei -2pt/L ei f) - 1/2 (ei 2pt/L ei -(2wt+f) + ei -2pt/L ei -(2wt+f)) dt
+1/4 INT ei f + ei -(2wt+f) - 1/2 (ei (2pt/L + f) + ei (-2pt/L + f)) - 1/2 (ei (2pt/L - 2wt - f) + ei (-2pt/L - 2wt - f)) dt
+1/4 INT ei f + ei -(2wt+f) - 1/2 ei (2pt/L + f) - 1/2 ei (-2pt/L + f) - 1/2 ei (2pt/L - 2wt - f) - 1/2 ei (-2pt/L - 2wt - f) dt
+1/4 (t ei f + -1/2w ei -(2wt+f) - L/4p ei (2pt/L + f) + L/4p ei (-2pt/L + f) - 1/2 / (2p/L - 2w) ei (2pt/L - 2wt - f) - 1/2 / (-2p/L - 2w) ei (-2pt/L - 2wt - f)
+1/4 (t ei f + -1/2w ei -(2wt+f) - L/4p ei (2pt/L + f) + L/4p ei (-2pt/L + f) - L/(4p - 4wL) ei (2pt/L - 2wt - f) - L/(-4p - 4wL) ei (-2pt/L - 2wt - f)
+
+1/4 (t ei f + -1/2w ei -(2wt+f) - L/4p ei (2pt/L + f) + L/4p ei (-2pt/L + f) - L/(4p - 4wL) ei (2pt/L - 2wt - f) - L/(-4p - 4wL) ei (-2pt/L - 2wt - f) at 0 =
+1/4 (0 + -1/2w ei -f - L/4p ei f + L/4p ei f - L/(4p - 4wL) ei -f - L/(-4p - 4wL) ei -f)
+
+1/4 (t ei f + -1/2w ei -(2wt+f) - L/4p ei (2pt/L + f) + L/4p ei (-2pt/L + f) - L/(4p - 4wL) ei (2pt/L - 2wt - f) - L/(-4p - 4wL) ei (-2pt/L - 2wt - f) at L =
+1/4 (L ei f + -1/2w ei -(2wL+f) - L/4p ei f + L/4p ei f - L/(4p - 4wL) ei (-2wL - f) - L/(-4p - 4wL) ei (-2wL - f))
+
+F(0) with terms canceled
+1/4 (0 + -1/2w ei -f - L/(4p - 4wL) ei -f - L/(-4p - 4wL) ei -f)
+
+F(L) with terms canceled
+1/4 (L ei f + -1/2w ei -(2wL+f) - L/(4p - 4wL) ei (-2wL - f) - L/(-4p - 4wL) ei (-2wL - f))
+1/4 (L ei f + -1/2w ei -2wL ei -f - L/(4p - 4wL) ei -2wL ei -f) - L/(-4p - 4wL) ei -2wL ei -f)
+
+Difference
+1/4 (L ei f + -1/2w ei -f (ei -2wL - 1) - L/(4p - 4wL) ei -f (ei -2wL - 1) - L/(-4p - 4wL) ei -f (ei -2wL - 1))
+
+
+SUM a[n]x[n]y[N-n] <==> SUM x[n]a[N-n]y[N-n] ?
+No difference between the two if a[n] = a[N-n],
+but this can be true for all N only if a[n] is constant.
+
+
+H(w) = F(w)*s(w)
+s = -i for w>0; i for w<0, 0 for w=0
+i*-i(a + bi) + (a + bi) =  a + bi + a + bi = 2a + 2bi ==> a + bi = F(w)
+i*i(a - bi) + (a - bi)  = -a - bi + a - bi = 0  - 2bi ==>   - bi = Im(F(w))
+
+
+A 1/2 (1 - cos([t-r:t+r] 2p/2r)) cos([t-r:t+r] 2p (1/w + f))
+E = Sn x[n]^2 (A^2/4 (1 - 2 cos((n-t) 2p/2r) + cos^2((n-t) 2p/2r)) cos^2((n-t) 2p (1/w + f))
+dE/dA = 2E/A
+dE/dt = 
+
+
+
+f[n] = x[n] / sqrt S (x[n] x[n])
+S f[n]f[n] = S (x[n] x[n] / S (x[n] x[n]))
+           = 1
+g[n] = y[n] / E(y)
+
+S (f*g[n] f*g[n]) = Sk (Sm f[m]g[k-m]) (Sn f[n]g[k-n])
+                  = Sk Sm Sn f[m]g[k-m]f[n]g[k-n]
+
+[r2/2 r2/2] * [1/r6 -2/r6 1/r6]
+[r2/2r6 -r2/2r6 -r2/2r6 r2/2r6]
+2/4*6 * 4 = 1/3
+
+    x = [x; zeros(size(x))];
+    n = size(x);
+    lm = log(abs(fft(x)));
+    w = [ones(n/2); -ones(n/2)];
+    curve = imag(fft(w.*ifft(lm)));
+    y = ifft(exp(lm+i*curve));
+    y = y(1:n/2);
+
+Sw ei wn exp (lm + i curve)
+Sw ei wn exp (log abs(Sv ei -wn x[n])) + i curve)
+Sw ei wn exp log abs(Sk ei -wk x[k]) ei curve
+Sw ei wn abs(Sk ei -wk x[k]) ei Im Sm (ei -um s[m] Sa (ei ap log abs Sq (ei -zq x[q])))
+
+
+-a +  b - c + d = xm1
+              d = xp0
+ a +  b + c + d = xp1
+8a + 4b +2c + d = xp2
+
+2b + 2d = xm1 + xp1
+2b = xm1 + xp1 - 2xp0
+2a + 2c = xp1 - xm1
+7a + 3b + c = xp2 - xp1
+12a + 6b = 2xp2 - 2xp1 - xp1 + xm1 = xm1 - 3xp1 + 2xp2
+12a = 2xp2 - 3xp1 + xm1 - 3xm1 - 3xp1 + 6xp0 =  -2xm1 + 6xp0 -  6xp1 + 2xp2
+12c = 6xp1 - 6xm1 + 2xm1 - 6xp0 + 6xp1 - 2xp2 = -4xm1 - 6xp0 + 12xp1 - 2xp2
+2b = xm1 + xp1 - 2xp0
+              d = xp0
+
+Df = 3aatt + 2bt + c = 0
+t = -2b +- sqrt(4bb - 12aac) / 6aa
+  = -b +- sqrt(bb - 3aac) / 3aa
+
+DDf = 6at + 2b < 0
+t < b/3a
+-b +- sqrt(bb - 3aac) / 3aa < b/3a
+-b +- sqrt(bb - 3aac) / a < b
+-1 +- sqrt(1 - 3aac/bb) / a < 1
++-sqrt(1 - 3aac/bb) < a+1
+1 - 3aac/bb < aa + 2a + 1
+-3aac/bb < aa + 2a
+
+
+
+Volume of n-sphere
+V(n,r) = r^n pi^(n/2) / Gamma(n/2 + 1)
+= r^n pi^(n/2) / n/2 Gamma(n/2)
+= 2 r^n pi^(n/2) / n Gamma(n/2)
+
+Surface area is derivative wrt r evaluated at R?
+V(2,r) = pi r^2
+DV(2,r) = 2 pi r dr ==> 2 pi R
+V(3,r) = 4/3 pi r^3
+DV(3,r) = 4 pi r^2 ==> 4 pi R^2
+
+Surface area of n-sphere
+DV(n,r)/dr = r^(n-1) n pi^(n/2) / Gamma(n/2 + 1)
+= r^(n-1) pi^(n/2) / 1/2 Gamma(n/2)
+= 2 r^(n-1) pi^(n/2) / Gamma(n/2)
+
+So chances of being near a particular point (0-sphere) on a unit n-sphere are about
+V(n-1,eps) / S(n,1) = eps^(n-1) pi^((n-1)/2) / Gamma(n/2 + 1/2)  /  n pi^(n/2) / Gamma(n/2 + 1)
+= eps(n-1) / n sqrt(pi)  gamma(n/2+1)/gamma(n/2+1/2)
+
+
+Stirling's Formula
+Gamma(t+1) <== sqrt(2 pi t) (t/e)^t
+as t approaches inf
+
+Chances of being near a particular m-sphere on a unit n-sphere are about
+V(n-m-1,eps) S(m,1) / S(n,1)
+= 2 gamma(n/2) eps^(n-m-1) / (sqrt(pi) gamma(m/2) gamma((n-m-1)/2))
+
+Volume of an m,n-torus
+
+Now we say it needs to be less than some threshold value
+
+
+X . Y = |X||Y| cos t = R
+X . (Y-aX) = 0
+X . Y = x . aX = a (X . X)
+a = (X . Y) / (X . X)
+
+
+Get response of input with kernel
+Complex-extend response
+Get times where arg of response crosses zero
+These are where the peaks of the grain envelopes are
+
+
+TODO:
+How does the continuation between windows work? We need to keep moving forward
+ in the case of a long coherent sinusoid. ==> Be sure to scale the grain so the
+ energy before the peak of the grain isn't stronger than the corresponding energy
+ in the section from which the grain will be removed.
+Look into better frequency peak estimation because long kernels have that tight
+ frequency bandwidth and it leaves a big residual.
+ 
+ 
+domain of kernel in radians: t=[-pi+eps, pi-eps], interval of 2pi-eps
+kernel: window * sinusoid
+sinusoid = cos(t * wavenumber), domain interval t * wavenumber
+interval in samples = t * wavenumber / rads_per_sample =
+    [-wavenumber*pi/rads_per_sample+eps, wavenumber*pi/rads_per_sample-eps]
+    with eps such that endpoints land just short of window = 0
+window = 0 at t = +-pi, just beyond endpoints of domain of kernel
+if endpoints of interval correspond exactly to window = 0, eps = 1
+else eps = positive endpoint - floor(positive endpoint) =
+    1 - (ceil(positive endpoint) - positive endpoint) <== this case also works for window = 0
+discrete endpoint = wavenumber*pi/rads_per_sample - (1 - (ceil(wavenumber*pi/rads_per_sample) -
+                                                          wavenumber*pi/rads_per_sample))
+                  = ceil(wavenumber*pi/rads_per_sample) - 1
+
+filter_output(this_peak_location) ==> 
+    filter_input(this_peak_location - discrete_kernel_length + 1)
+    
+
+So we've decided that we're going to prohibit adding lagging energy.
+Five of the ways are:
+1. Clamp the grain amplitude so no lagging sample in the filter output is increased in absolute
+    amplitude.
+2. Clamp the grain amplitude so no part of the lagging filter output increases in energy.
+2A. Clamp the grain amplitude so neither the energy nor the maximum absolute amplitude of the
+     lagging output amplitude increases.
+3. Look for a certain measure of significance, like a certain number of statistically significant
+    consecutive peaks with statistically meaningful periodicity, then also apply 1 or 2.
+4. Require that a certain proportion of lagging energy have statistically significant response.
+5. Clamp the grain amplitude so no part of the lagging filter input increases in energy?
+The big question is, once we've determined which of these approaches are sufficient, can they be
+computed quickly? Idea 3 might reduce the amount of 1 or 2 that needs to be computed.
+
+Regarding 5.:
+|x| > |x-s| = sqrt(|x|^2 + |s|^2 - 2|x||s| cos t)
+|x|^2 > |x|^2 + |s|^2 - 2x.s
+|s|^2 - 2x.s < 0
+s.s < 2x.s
+Would this ever underconstrain the grain amplitude? Or could minimizing error now unduly magnify
+  future error?
+If this works, perhaps we could go back to an acausal decomposition scheme? No, that would give us
+  a cluster of grains of various amplitudes even when a uniform train would do.
+
+What about ultra-short blips that are nonetheless statistically significant? Maybe we should
+  constrain grain amplitude based on both past and future?
+
+
+a the maximum such that |x-as| < |x|. But that isn't enough. We also want
+|x[m,n]-as[m,n]| < |x[m,n]| for all n-m > c for some small enough c.
+But what is small enough?
+
+Or consider a statistical approach, like what is the probability that this distribution of energy
+over time
+
+FALSE POSITIVES. THAT'S WHAT WE'RE LOOKING FOR.
+
+What is the likelihood that this concentration would cause a significant response from some
+randomly chosen kernel?
+
+Or, what is the amount of error between this concentration and a grain of the appropriate energy?
+
+
+    x = [x; zeros(size(x))];
+    n = size(x);
+    lm = log(abs(fft(x)));            % Fourier of cepstrum -- symmetric because abs(real signal)
+    w = [ones(n/2); -ones(n/2)];      % Hilbert thingy for flipping over acausal components
+    curve = imag(fft(w.*ifft(lm)));   % minimized phase response -- antisymmetric because fft is
+                                      %  conjugate symmetric because
+                                      %  ifft(lm) is real because lm is symmetric
+    y = ifft(exp(lm+i*curve));        % lm+i*curve is conjugate symmetric because curve
+                                      %  antisymmetric
+    y = y(1:n/2);                     % take first half because we zero-padded original time
+                                      %  domain
+
+
+This is what we're going to try:
+
+1. What is the likelihood that the variance would be as small as it is, given the response?
+    In the inputs that would give such a response, what is the probability of finding a
+    lesser variance?
+    
+    With many degrees of freedom we assume the mean has a normal distribution
+
+    
+h: filter
+d: decomp
+x: input
+
+h * (x - d) = h*x - h*d
+
+h*x = SUM h[k]x[n-k]
+h*d = SUM h[k]d[n-k]
+h*x - h*d = SUM (h[k]x[n-k] - h[k]d[n-k])
+
+So if supports for h, d, and x all start at n=0,
+support for h*x starts at n=0, same with h*d.
+Supports for h, d, x end at Nh-1, Nd-1, Nx-1.
+
+
+We have the function
+s[n] = MIN y[p[k]+n] / h[p[k]]
+and we seek local maxima of it.
+max V =  infnorm V
+min V = -infnorm V
+So
+MIN y[p[k]+n] / h[p[k]]
+= -infnorm y[p[k]+n] / h[p[k]]
+= (sum (y[p[k]+n] / h[p[k]])^(-x))^(-1/x)
+For extremely great x
+Let q[-t] = 1/h[t] = 0 for t not in p[k]
+Then we can say
+= (sum (y[k+n]q[-k])^(-x))^(-1/x)
+And changing the sense of k, we have
+= (sum y[-k+n]^(-x) q[k]^(-x)) ^ (-1/x)
+= (q^(-x) * y^(-x)) ^ (-1/x)
+
+
+Back to a statistical approach:
+
+What is the likelihood that this concentration would cause a significant response from some
+randomly chosen kernel?
+
+Likelihood of getting stronger response from a given kernel:
+        % mu = 0; mean of filter output
+        % var = |V|^2 |X|^2 / N^2 or so; variance of filter output
+        %  This is the square norm of the filter kernel times the variance of the input.
+        %  We take the variance of the input to be |X|^2/N^2 because we don't really know
+        %  what it should be; we're measuring it from the input directly hoping that the
+        %  input provides a good enough sample for such measurement.
+        % pdf = gaussian(mu, var); probability density of filter output
+        % |max_possible_response| = |V||X| = N sqrt(var) = N sig
+        % (This is the maximum possible response given the norms of V and X.)
+        % prob_of_stronger_response = 2 * (erf(N sig) - erf(|V.X|)) / erf(N sig)
+        
+So we set a threshold probability and ask what fraction of the kernels yield a statistically
+significant response.
+
+But frequency can go infinitely low. So where do we draw the minimum? <== We don't consider
+frequencies under 40 Hz or so in the first place.
+
+Call V(f) the vector corresponding to a filter kernel for frequency f. How do we quickly
+compute |V(f).X| for all f? <== V(f) = W.cos(f), |V(f).X| = |cos(f).(W.X)|, use FFT.
+
+It turns out that as wide as sloppy peaks can be, just a handful of tight peaks can create
+a situation in which too high a fraction of bins have significant response. :(
+
+
+X(v'X)' = ((v'X)X')' = (v'XX')' = (XX')'v = X'Xv
+v'X = w' ==>  v' = w'/X
+~(X'X) = (~X~X')
+e'(~X~X')e = (e'~X)(~X'e) = |e'~X|^2
+X |e'~X| (~X~X')e = ~X'e / |e'~X| = e'~X / |e'~X| ==> unit vector
+
+e'~X = ~Xe because ~X is symmetric because X is symmetric
+SUM xij yji = 0,1 for i/=j,i=j; xij = xji; yij = yji
+(SUM yj)i = (~Xe)i
+
+
+-- Review the paper about least angle regression
+-- Implement it
+-- Test on sinusoid
+-- Test on various linear combinations
+-- Try flat distribution noise with sinusoids
+-- Try weird distribution noise with sinusoids
+
+N = 1: variance = 0
+
+N = 2: variance = (a-b)^2 / 4 = aa/4 - ab/2 + bb/4
+                < bb
+                bb/4 - bb - ab/2 + aa/4 < 0
+                3bb + 2ab - aa < 0
+                (3b - a)(b + a) < 0
+                3b > a > -b  OR
+                3b < a < -b                 
+                
+N = 3: variance = ((a - mu)^2 + (b - mu)^2 + (c - mu)^2) / 3
+   Without loss of generality, a = 0, b = 1
+       mu = (c+1)/3
+       variance = (((-c-1)/3)^2 + ((-c+2)/3)^2 + ((2c-1)/3)^2) / 3
+                = 
+                
+                
+INT ei -wt ei w(t+f) dt
+= INT ei wf dt = A ei wf
+wf = rads/sec * sec = rads
+f = arg/w
+ei w(t+f) = 1
+w(t+f) = 2 pi k
+t = (2 pi k) / w - f
+so use smallest k such that t is not negative
+2 pi k / w - f >= 0
+2 pi k >= wf
+k >= wf/2pi = ceil(wf/2pi)
+t = 2pi ceil(wf/2pi) / w - f
+
+
+N
+L
+L/W
+x(k) = kL/W + f
+x(k) + L > 1  AND  x(k) < N
+kL/W + f > 1  AND  kL/W + f < N
+k > (1-f)W/L  AND  k < (N-f)W/L
+k > floor((1-f)W/L) + 1  AND  k < ceil((N-f)W/L) - 1
+k has (ceil((N-f)W/L) - 1) - (floor((1-f)W/L) + 1) + 1 solutions
+= ceil((N-f)W/L) - 1 - floor((1-f)W/L) - 1 + 1
+= ceil((N-f)W/L) - floor((1-f)W/L) - 1
+
+
+out is the result of a median filter of width 31
+lo = log(half_spectrum(16:end-15)+1e-300) - log(out+1e-300);
+pos = (lo(3:end) <= lo(2:end-1)) .* (lo(2:end-1) > lo(1:end-2)) .* (lo(2:end-1) > 0);
+pind = find(pos);
+srt = sort(lo(pind));
+qqq = sqrt(sqcum/sqcum(end)));
+qqq = qqq * size(qqq,1);
+plot(qqq(find(diff(qqq) > 1)+1))
+
+
+f(t) such that
+d/dw | INT f(t) ei -wt dt |^2 < 0   for w > 0 and vice versa
+d/dw F(w) F(-w) < 0
+F'(w)F(-w) + F(w)F'(-w) < 0
+F'(w)F(-w) - (F(-w)* F'(w)*) < 0
+F'(w)F(-w) - (F(-w)F'(w))* < 0
+2F(w)F'(w) < 0
+F(w)F'(w) < 0   for w > 0
+F(w)F'(w) > 0   for w < 0
+So we have arg F' = pi - arg F for w > 0 and
+           arg F' =     -arg F for w < 0
+arg F' = -arg F* for w > 0
+F' = -S(w) F  for w>0 and some positive real S(w)
+F' =  S(w) F* for w<0
+-it f(t) = -s(t) * f(t)  for w>0
+-it f(t) =  s(t) * f(-t) for w<0
+and s is conjugate symmetric, and f is antisymmetric
+
+Starting over...
+f(t) such that
+d/dw | INT f(t) ei -wt dt |^2 < 0   for w > 0 and vice versa
+d/dw F(w) F(w)* < 0   for w > 0 and vice versa
+F'F* + FF*'
+F'F* + (F*F')*
+2 Re(F'F*)
+Re(F'F*) < 0   for w > 0 and vice versa
+(-it f(t) * f(-t)) + (it* f(-t)* * f(t)*)
+(-it f(t) * f(-t)) + (it f(-t) * f(t))*
+-i(t f(t) * f(-t)) - i(t f(-t) * f(t))*
+That was a diversion.
+So
+|arg(F'F*)| > pi/2
+|arg F' + arg F*| > pi/2
+|arg F' - arg F| > pi/2
+So it seems some circle, let it be the unit circle z=1,
+  is a source for w > 0 and a sink for w < 0
+Also, let's have 0 be a source for w > 0 and a sink for w < 0
+Let's try F' = iF^2 i(F - 1/2)
+
+
+Predictors
+==========
+Spectral: Peaks in Fx ==> sinusoids, S
+Transient: Peaks in x ==> sinusoids in Fx, FT
+Periodic: Peaks in x[n] * x[-n] or cepstrum ==> average of delayed time series, P
+Impulse Train: Peaks in x |x| or inv. cepst. ==> average of shifted FFT series, FM
+(S (+) T (+) P (+) M)a + l norm1 a = x
+
+
+Izotope Iris         $150-200
+Adobe Audition       $20/mo
+Camel Audio Alchemy  $250
+Sony Sound Forge     $300-400
+Sony SpectraLayers   $400
+Sony Bundle          $500-600
+
+
+Get simple sinusoid working
+Generate test cases
+Test!
+Get periodic part working so sinusoids might be reduced in number
+Get transients
+Get impulse train working so impulses might be reduced in number
+
+
+a' inv(X) = b'
+a' X = b' inv(X X)
+G_a = X_a' X_a  is symmetric
+L_a L_a' = G_a  is symmetric  *** Cholesky decomp
+A_A = 1 / sqrt(1_A' inv(G_A) 1_A)
+A_A = 1 / sqrt(1_A' inv(L_A)' inv(L_A) 1_A)
+L_A q_A = 1_A                 *** Forward substitution
+A_A = 1 / sqrt(q_A' q_A)      *** Straightforward arithmetic
+
+w_A = A_A inv(G_A) 1_A
+    = A_A inv(L_A)' q_A
+L_A' w_A = A_A q_A            *** Backward substitution
+
+L0 L0' = G0
+L0 a = G1(end, 1:end-1)
+a.a + xx = G1(end,end)
+
+G1(1:end-1,end) = L0 a        *** Forward substitution
+x = sqrt(G1(end,end) - a.a)   *** Straightforward arithmetic
+L1 = [L0 a; a' x]             *** Construction of successive Chol decomp
+
+
+X(w,0,N) = SUM {0,N-1} x[n] ei (2pi wn/N)
+X(2w,0,N)
+ = SUM {0,N-1} x[n] ei (2pi 2wn/N)
+ = SUM {0,N/2-1} x[n] ei (2pi 2wn/N) + SUM {N/2,N-1} x[n] ei (2pi 2wn/N)
+ = SUM {0,N/2-1} x[n] ei (2pi wn/(N/2)) + SUM {N/2,N-1} x[n] ei (2pi wn/(N/2))
+ = SUM {0,N/2-1} x[n] ei (2pi wn/(N/2)) + SUM {0,N/2-1} x[n+N/2] ei (2pi w(n+N/2)/(N/2))
+ = SUM {0,N/2-1} x[n] ei (2pi wn/(N/2)) + SUM {0,N/2-1} x[n+N/2] ei (2pi w(n/(N/2)+1))
+ = SUM {0,N/2-1} x[n] ei (2pi wn/(N/2)) + SUM {0,N/2-1} x[n+N/2] ei (2pi wn/(N/2) + 2pi w)
+ = SUM {0,N/2-1} x[n] ei (2pi wn/(N/2)) + SUM {0,N/2-1} x[n+N/2] ei (2pi wn/(N/2)) ei (2pi w)
+ = SUM {0,N/2-1} x[n] ei (2pi wn/(N/2)) + SUM {0,N/2-1} x[n+N/2] ei (2pi wn/(N/2))
+ = SUM {0,N/2-1} (x[n] + x[n+N/2]) ei (2pi wn/(N/2))
+ = X(w,0,N/2) + X(w,N/2,N/2)
+X(2w+1,0,N)
+ = SUM {0,N-1} x[n] ei (2pi (2w+1)n/N)
+ = SUM {0,N-1} x[n] ei (2pi (2wn/N+n/N))
+ = SUM {0,N-1} x[n] ei (2pi 2wn/N) ei (2pi n/N)
+ = SUM {0,N/2-1} x[n] ei (2pi 2wn/N) ei (2pi n/N) + 
+   SUM {N/2,N-1} x[n] ei (2pi 2wn/N) ei (2pi n/N)
+ = SUM {0,N/2-1} x[n] ei (2pi wn/(N/2)) ei (2pi n/N) +
+   SUM {N/2,N-1} x[n] ei (2pi wn/(N/2)) ei (2pi n/N)
+ = SUM {0,N/2-1} x[n] ei (2pi wn/(N/2)) ei (2pi n/N) +
+   SUM {0,N/2-1} x[n+N/2] ei (2pi w(n+N/2)/(N/2)) ei (2pi (n+N/2)/N)
+ = SUM {0,N/2-1} x[n] ei (2pi wn/(N/2)) ei (2pi n/N) +
+   SUM {0,N/2-1} x[n+N/2] ei (2pi (wn/(N/2)+w)) ei (2pi (n/N+1/2))
+ = SUM {0,N/2-1} x[n] ei (2pi wn/(N/2)) ei (2pi n/N) +
+   SUM {0,N/2-1} x[n+N/2] ei (2pi wn/(N/2) + 2pi w) ei (2pi n/N + pi)
+ = SUM {0,N/2-1} x[n] ei (2pi wn/(N/2)) ei (2pi n/N) +
+   ei pi SUM {0,N/2-1} x[n+N/2] ei (2pi wn/(N/2)) ei (2pi n/N)
+ = SUM {0,N/2-1} x[n] ei (2pi wn/(N/2)) ei (2pi n/N) -
+   SUM {0,N/2-1} x[n+N/2] ei (2pi wn/(N/2)) ei (2pi n/N)
+ = SUM {0,N/2-1} (x[n] - x[N/2]) ei (2pi (w+1/2)n/(N/2))
+ = X(w+1/2,0,N/2) - X(w+1/2,N/2,N/2)
+ 
+x - y
+(exp x + d) / (exp y + e)
+exp (x + y) + e exp x + d exp y + de
+x + y + 1/(e exp x + d exp y + de)
+
+
+Measurements
+ - Running short-time energy measure
+ - Complex bandpasses
+   - Running amplitude
+   - Running phase rate
+   - Running offset
+ - Running FFT?
+ 
+Problem:
+How do you know the difference between a wideband partial and two
+narrowband partials, one say -20 dB relative to the other?
+ - We track rapid changes, and when a too rapid change appears,
+    we call it a "disruption", which will indicate that we mustn't
+    divide the current analysis band, but merge it with some
+    adjacent band. So we'll be running multiple analyses at different
+    frequency resolutions concurrently, choosing the coarsest
+    resolution that lacks disruptions. The dyadic filter bank or
+    running FFT might provide such concurrent analyses implicitly.
+ 
+Problem:
+How to identify the cause of a disruption
+ - Interference?
+ - Wideband event?
+ - Unlucky one-time phase cancellation from two very similar sinusoids
+ - A wideband event will appear as a sudden change in energy,
+    so maybe a disruption is always phase cancellation in the
+    absence of a wideband event.
+ - Unlucky cancellation will happen only when the bandwidth of the
+    filter is at a minimum.
+ - Maybe we should treat a cancellation as unlucky if we haven't seen
+    one in a while.
+ - Difference between general interference and an "unlucky"
+    cancellation is the rate at which disruptions occur.
+
+Problem:
+How to deal with wideband events, especially considering a slowly
+periodic signal needs to be interpreted as an array of partials?
+ - First, spurious wideband events:
+   - Bands will lose coherence and merge, then break apart again;
+      no problem
+ - Second, periodic events:
+   - Well for one thing, a steady, low periodicity signal won't
+      have disruptions; interference will account for amplitude
+      changes in the broadband signal
+   - Yeah, so there you go
+
+Problem:
+The filter we're considering will have a very long IR. How can
+disruptions ever come through? Or is this even a problem?
+ - The great majority of the energy in the IR will be near the
+    middle; the length of the IR won't preclude fast changes so
+    much
+
+Problem:
+How to adapt filter parameters; bandwidth, frequency
+ - Adaptive splitting and merging + frequency tracking?
+ - Running FFT + reassignment + grouping?
+If you start with a high bandwidth filter bank
+ - How does band overlap affect things?
+   - Badly; overlap is to be avoided or corrected for
+   - Perhaps it can be avoided by using a dyadic filter bank with many
+      taps; then splitting and merging is a matter of simply adding
+      bands together.
+ - Split in the case of phase cancellation
+ - Merge when two center frequencies get close enough together, or
+    when adjacent channels have nothing in them.
+ - As center frequency drifts, does bandwidth change in order
+    to preserve coverage of frequency domain?
+   - A dyadic filter bank obviates this question.
+If you use a dyadic filter bank
+ - How do you deal with the fact that you get only one sample out
+    per 2^N in?
+   - You get measurements at a lower time resolution
+   - So, you can interpolate -- then how does this differ from Loris?
+     - Peak detection is implicit.
+     - You get exactly the enhanced-bandwidth components that are
+        present; you don't need to approximate with artificial
+        skirts.
+ - How do you deal with input sounds shorter than the reciprocal of
+    the transition bandwidth?
+   - Sound length limits meaningful freq resolution anyway, so
+      the analysis will adjust the parameters appropriately.
+ - What if a given channel contains energy from two consecutive
+    partials?
+   - When we decide what to merge with what, we'll have a choice
+      about which band to stick it to.
+   - At boundaries, we can "split" the channel by attributing
+      different proportions of the channel to each band.
+ - How do you decide if a band is noise?
+   - It has two or more partials in adjacent bins
+ - How do you draw the line between a band of noise and a band of
+    tone?
+   - The threshold between a minor variation and a disruption
+ - How do bands of strange width affect time resolution, for the
+    purposes of detecting disruptions in the band's time series?
+   - If we need to synthesize the time series explicitly, 
+      sometimes it just won't be possible to do efficiently
+      *shrug*
+ 
+Problem:
+How to handle unlucky cancellation?
+ - Within a single bin, "cancellation" is meaningless; it's simply
+    a quiet block
+    
+Problem:
+How much of each component to subtract from whole?
+ - Bad question. The whole signal is decomposed, leaving nothing.
+    Then the question becomes the following question, the one about
+    extracting tight partials.
+
+Problem:
+If we want to extract tight partials that correspond to the enhanced-
+ bandwidth components, how do we subtract out the energy without
+ leaving dips in the spectrum at these wide-ish-band peaks? We need
+ to decide the bandwidth and amplitude of the extracted component.
+ - Somehow come up with a "smoothed" version of the band that
+    contains just enough disruption to qualify as noise, and that can
+    be the residual
+
+Problem:
+When a noise band is next to a partial band, how to decide which
+bins go to the noise and which to the partial?
+ - As many as possible go to the partial without turning it into
+    noise, but there's a max partial bandwidth, adjustable as a
+    parameter of the system
+    
+Problem:
+How do we detect transients?
+ - This can be left for later, but it'll be something like looking
+    for sudden changes in the running energy, or sudden changes
+    in the spectral decomposition, although these two might end up
+    being the same thing
+
+Problem:
+How do we handle shifting borders between bands without getting
+ discontinuities?
+ - Linear fade *shrug* -- good enough for now
+ - Modeling as overlapping spectral envelopes would take care of this
+  
+Things to try:
+ - Some sort of multipass approach
+ - Modeling skirts as symmetric, maybe Gaussian, extracting partials
+    with linear optimization
+    
+
+Imagine critical band filters running concurrently, a bank spanning
+the whole spectrum. Initially the frequency resolution is bad because
+you have only a few milliseconds of audio. But as time goes on your
+meaningful frequency resolution increases.
+
+Then there's a transient, or some kind if disruption in some measure
+of power in some band, and all of a sudden your confidence in the
+spectrum you're measuring decreases, decreasing the meaningful
+frequency resolution.
+
+So we take a running FFT, say one every millisecond, and we use it
+to make power measurements over bands of varying widths. We look for
+changes in these power measurements, and changes that exceed a
+certain amount depending on the bandwidth, we say they ruin the
+frequency resolution we had built up so far.
+
+We can locate frequency peaks of disruption, even when the
+frequency resolution is low, by interpolation. Then we somehow group
+together the bins that contribute to that peak.
+
+So transients are time-frequency regions where the frequency
+resolution is low.
+
+Note that a steady-state, low periodicity signal will look like
+disruptions on a wide-band/short-time scale, but will look steady
+on a narrow-band/long-time scale.
+
+We have two qualitative properties we consider independently: time-
+peakiness, indicated by wide-band/short-time scale disruptions, and
+pitchedness, indicated by steadiness on a narrow-band/long-time
+scale. Some signals will exhibit both properties.
+
+So this is just a way of deciding where the frequency resolution is
+good, where it's bad, and where in frequency energy is concentrated.
+Deciding where transients and partials are is a matter of
+interpreting this data. It's just that we mustn't forget that a
+signal that looks frequency-coarse on a short time scale can be
+frequency-fine on a longer time scale.
+
+We want to decompose, but we also recognize that some sounds live
+in two or more overlapping timbral regions. So for some sounds, it's
+unclear whether to decompose into transients or into sinusoids.
+
+We're using analysis to decide how to decompose. The analysis
+analysis might be different from the decomposition analysis!
+
+
+
+Consider any number of different possible decompositions based
+directly on naive analysis. *Experiment* with ways to pull out
+features. Some ideas will be ad hoc, specific to the analysis
+method, but useful, and will only reveal themselves when you have an
+analysis graph to look at.
+ - Frequency decomposition: linear or dyadic
+ - Window types, symmetric or not
+ - One method of feature extraction will be to look at analyses at
+several time resolutions simultaneously and greedily take the
+strongest component, recomputing analyses as needed.
+ - Concentration detection by considering each peak as if it
+couldn't possibly contain, or be contained by, a greater
+concentration, ordering them by score, and somehow going from there.
+ - Somehow performing concentration detection on several frequency
+resolutions concurrently in the interest of identifying poorly
+localized concentrations.
+
+
+C = f1(0) + f2(0) + f2(1) + f2(2)
+  = f1(1) + f2(1) + f2(2) + f2(3)
+  = f2(0) + f2(1) + f2(2) + f2(3)
+f1(0) = f2(3)
+
+
+Properties                 Operations
+==========                 ==========
+- Prominence               Add
+- Magnitude                Multiply
+- Bin number               Curve shape
+- Block number             Quantize
+- Real                     (Phase) Rotate mod 2pi
+- Imaginary                Resample
+- Phase                    Smooth
+- Window                   Delay
+- Time                     Noisify
+- Frequency                Clip (high or low)
+- Time resolution
+- Frequency resolution
+- Sample rate
+- Statistic
+-- Max
+-- Min
+-- Median
+-- Mean
+-- Variance
+-- Std Dev
+
+
+z = INT (x - y1)^2 dt + INT (x - y2)^2 dt
+  = INT [0,m] x^2 - INT [0,m] 2x y1 + INT [0,m] y1^2 + 
+    INT [m,N] x^2 - INT [m,N] 2x y2 + INT [m,N] y2^2
+y1 = b1 + t/m (b2-b1)                 t in [0,m]
+y2 = b2 + (t-m)/(N-m) (b3 - b2)       t in [m,N]
+dz/dm = -2x (y1(m) - y2(m)) + y1(m)^2 - y2(m)^2           = 0
+dz/b1 = -INT [0,m] 2x - 2xt/m + 2(b1 + t/m (b2-b1))(-t/m)
+      = -2 INT [0,1] x - xt - b1 t + tt (b2-b1) dt        = 0
+dz/b2 = 
+
+
+q-norm
+for q < 1, m SUM (x/m)^q
+f(xhat,q) = m (SUM (x/m)^q) ^ 1/q
+          = exp log (SUM x^q) ^ 1/q
+          = exp 1/q log (SUM x^q)
+          = exp 1/q log (SUM exp log x^q)
+          = exp 1/q log (SUM exp q log x)
+df/dq = d/dq [1/q log (SUM exp q log x)] exp 1/q log (SUM exp q log x)
+      = d/dq [1/q log (SUM exp q log x)] (SUM x^q) ^ 1/q
+      = [(d/dq 1/q) log (SUM exp q log x) + 1/q (d/dq log [SUM exp q log x]) (SUM x^q) ^ 1/q
+      = [-1/qq log (SUM exp q log x) + 1/q (1/[SUM exp q log x] d/dq [SUM exp q log x])
+        (SUM x^q) ^ 1/q
+      = [-1/qq log (SUM x^q) + 1/q (1/[SUM x^q] d/dq [SUM exp q log x]) (SUM x^q) ^ 1/q
+      = [-1/qq log (SUM x^q) + 1/q (1/[SUM x^q] [SUM d/dq (exp q log x)]) (SUM x^q) ^ 1/q
+      = [-1/qq log (SUM x^q) + 1/q (1/[SUM x^q] [SUM d/dq (q log x) exp q log x])
+        (SUM x^q) ^ 1/q
+      = [-1/qq log (SUM x^q) + 1/q (1/[SUM x^q] [SUM log x exp q log x])
+        (SUM x^q) ^ 1/q
+      = [-1/qq log (SUM x^q) + 1/q (1/[SUM x^q] [SUM x^q log x]) (SUM x^q) ^ 1/q
+      = [-1/qq log (SUM x^q) + 1/q ([SUM x^q log x]/[SUM x^q]) (SUM x^q) ^ 1/q
+
+      
+      
+      
+      
+       mystran; Thu May 17, 2012 10:14 am
+Cheap non-linear zero-delay filters
+Ok, so I didn't want to pollute that other thread, so I'm starting a new one. 
+
+In that other thread I mentioned you can linearize a filter around it's known state and get reasonable results for not much overhead. Here's some discussion of the topic. [edit: also, while I said "zero-delay" in the thread title, I'm really doing "topology-preservation" too; you don't need to, if you don't want to, but it kinda helps if you want to mimic analog non-linearities] 
+
+I'm not going to concern myself with BLT other than note that since this is based on trapezoidal integration, and since I'm using TDF2 BLT integrators as building blocks, we can tune filters exactly in cases where the non-linearities are negligible (which is to say that I'm not going to discuss what happens when the non-linearities force the cutoff to change and we're in a seriously warped region of the BLT frequency scale). Namely, the form of integrator building block I'm using is: 
+
+CODE: SELECT ALL
+  y[n+1] = s[n] + f*x[n]
+  s[n+1] = s[n] + 2*f*x[n]
+
+ where
+  x[n], y[n] and s[n] are input, output and state
+
+ and the tuning that maps the normalized analog frequency 1
+ to whatever frequency we want is
+  f = tan(M_PI * freq / samplerate)
+
+
+Few useful observations: if we think of y[n] and s[n] as continuous piece-wise linear functions y(n) and s(n), then y(n)=s(n-0.5). So the output is essentially a half-sample delayed version of the state. We're going to abuse this.
+
+To keep things simple and the math short, I'm going to use a one-pole OTA lowpass (straight from the LM13700 datasheet) as and example and ignore all the practical details like signal levels (eg we'd really need need a ton of 1/vT factors) and auxiliary circuitry. So we have the following model for the OTA (the derivation or accuracy of which is not important) and capacitor:
+CODE: SELECT ALL
+ iOta = iCtl * tanh(vIn)
+ dVcap/dt = 1/C * iOta
+
+And with feedback (since we want lowpass and not an integrator):
+CODE: SELECT ALL
+ dVcap/dt = iCtl/C * tanh( vIn - vCap )
+
+So if we discretize, we get:
+CODE: SELECT ALL
+ y[n+1] = s[n] + f * tanh( x[n] - y[n+1] )
+
+This looks like it needs a feedback solver, but here's the thing: Let's rewrite the OTA in terms of transconductance gM = iOut/vIn and we get:
+CODE: SELECT ALL
+ gM(vIn) = iCtl * ( tanh( vIn ) / vIn )
+or:
+ iOut = iCtl * T(vIn) * vIn
+where:
+ T(x) = tanh(x) / x 
+
+[footnote: tanh(x)/x=1 in the limit x -> 0, but it's easy to adapt most tanh(x) approximations to return tanh(x)/x instead and avoid this issue]
+[footnote: you can do this for practically any type of memoryless non-linearity, even when "transconductance" as such wouldn't be meaningful]
+
+This leads to:
+CODE: SELECT ALL
+ y[n+1] = s[n] + f * T(x[n] - y[n+1]) * (x[n] - y[n+1])
+
+The point of this exercise is that we can now treat the non-linear transconductance and the actual input separately. So what we can do, is combine Euler method for the non-linearity with trapezoidal method for the linear part! In alternative interpretation we delay the transconductance by half a sample. Recall that s[n] = y[n+0.5]. For consistency, use x[n-0.5]=0.5*(x[n]+x[n-1]) for the actual input signal; everything else is available from one of the filter states:
+CODE: SELECT ALL
+ y[n+1] = s[n] + f * T(x[n-0.5] - s[n]) * (x[n] - y[n+1])
+
+Now the feedback dependence is linear, so we can implement this as::
+CODE: SELECT ALL
+ t = T(0.5*(x[n] + x[n-1]) - s[n])
+ y[n+1] = (s[n] + f*t*x[n]) / (1 + f*t)
+ s[n+1] = s[n] + 2*f*t*x[n]
+
+Note that technically it this only reasonable when the signal changes slowly. That's true at audible frequencies if we oversample to avoid aliasing. With higher gain or nastier non-linearities it deviates more, but so does aliasing increase, and once you oversample you increase both again. In practice the above works remarkably well for almost anything I've thrown at it so far (transistor ladders, diode ladders, OTA cascades... you name it). 
+
+On paper it's less accurate than fitting a linear curve directly to the tangent of the tanh() for slowly changing signals, since we are fitting a linear curve from the origin to the known operating point, but unlike the tangent fitting method, this tolerates violations of the "signal changes slowly" assumption much better; we might feed a bit too much or two little current, but most of the time the results are relatively sane (which cannot be said about tangent fitting, which can run into crazy paradoxes). You can certainly use this directly and in most cases with a bit of oversampling (eg 4 times or so usually work sensibly for reasonable input levels) it sounds quite fine (and when I say "quite fine" I mean "certainly a lot better than a traditional sequential fudge-factored filter"). 
+
+Anyway, if you're NOT happy with the results (remember we're only first order as far as the non-linearities go), we can treat the calculated value as a prediction, and apply a correction step. Sensible approach would be a variation of Heun's method take the new state (and x[n+0.5]; you need one step lookahead) and recalculate the "transconductances" then redo the linear solver, then average the resulting state with the original prediction (and likewise for outputs). Since the error of the "correction" step should be opposite to the error of the "prediction" step, they should mostly cancel. As far as I can tell, this is sufficient to make it a true second-order method (don't feel like doing formal error analysis, sorry). 
+
+In practice the correction step roughly doubles the CPU use. In cases where the prediction works well (and most of the time it does), it's probably better idea to double the oversampling instead, but if you hit an obviously degenerate case, then the above could solve the issue.
+Last edited by mystran on Tue Jan 08, 2013 12:10 pm, edited 4 times in total.
+Image <- plugins | forum
+Top
+mystran
+KVRAF
+ 
+4219 posts since 11 Feb, 2006, from Helsinki, Finland
+ 
+Postby mystran; Thu May 17, 2012 10:18 am
+Cheap non-linear zero-delay filters
+For the TL;DR folks, here's transistor ladder using the above (without correction) to play with.. note that this assume straight and linear feedback loop which is not really a very good model in practice ;)
+
+//// LICENSE TERMS: Copyright 2012 Teemu Voipio
+// 
+// You can use this however you like for pretty much any purpose,
+// as long as you don't claim you wrote it. There is no warranty.
+//
+// Distribution of substantial portions of this code in source form
+// must include this copyright notice and list of conditions.
+//
+
+// input delay and state for member variables
+double zi;
+double s[4] = { 0, 0, 0, 0 };
+
+// tanh(x)/x approximation, flatline at very high inputs
+// so might not be safe for very large feedback gains
+// [limit is 1/15 so very large means ~15 or +23dB]
+double tanhXdX(double x)
+{
+    double a = x*x;
+    // IIRC I got this as Pade-approx for tanh(sqrt(x))/sqrt(x) 
+    return ((a + 105)*a + 945) / ((15*a + 420)*a + 945);
+}
+
+// cutoff as normalized frequency (eg 0.5 = Nyquist)
+// resonance from 0 to 1, self-oscillates at settings over 0.9
+void transistorLadder(
+    double cutoff, double resonance,
+    double * in, double * out, unsigned nsamples)
+{
+    // tuning and feedback
+    double f = tan(M_PI * cutoff);
+    double r = (40.0/9.0) * resonance;
+
+    for(unsigned n = 0; n < nsamples; ++n)
+    {
+        // input with half delay, for non-linearities
+        double ih = 0.5 * (in[n] + zi); zi = in[n];
+
+        // evaluate the non-linear gains
+        double t0 = tanhXdX(ih - r * s[3]);
+        double t1 = tanhXdX(s[0]);
+        double t2 = tanhXdX(s[1]);
+        double t3 = tanhXdX(s[2]);
+        double t4 = tanhXdX(s[3]);
+
+        // g# the denominators for solutions of individual stages
+        double g0 = 1 / (1 + f*t1), g1 = 1 / (1 + f*t2);
+        double g2 = 1 / (1 + f*t3), g3 = 1 / (1 + f*t4);
+        
+        // f# are just factored out of the feedback solution
+        double f3 = f*t3*g3, f2 = f*t2*g2*f3, f1 = f*t1*g1*f2, f0 = f*t0*g0*f1;
+
+        // solve feedback 
+        double y3 = (g3*s[3] + f3*g2*s[2] + f2*g1*s[1] + f1*g0*s[0] + f0*in[n]) / (1 + r*f0);
+
+        // then solve the remaining outputs (with the non-linear gains here)
+        double xx = t0*(in[n] - r*y3);
+        double y0 = t1*g0*(s[0] + f*xx);
+        double y1 = t2*g1*(s[1] + f*y0);
+        double y2 = t3*g2*(s[2] + f*y1);
+
+        // update state
+        s[0] += 2*f * (xx - y0);
+        s[1] += 2*f * (y0 - y1);
+        s[2] += 2*f * (y1 - y2);
+        s[3] += 2*f * (y2 - t4*y3);
+
+        out[n] = y3;
+    }
+}
+
+
+
+t = z+0.5
+(-1/2, 3/2, -3/2, 1/2)ttt +
+(1, -5/2, 2, -1/2)tt + (-1/2, 0, 1/2, 0)t + (0, 1, 0, 0)
+ttt = zzz + 3/2 zz + 3/4 z + 1/8
+tt = zz + z + 1/4
+(-1/2, 3/2, -3/2, 1/2)zzz +
+[3/2 (-1/2, 3/2, -3/2, 1/2) + (1, -5/2, 2, -1/2)]zz +
+[3/4 (-1/2, 3/2, -3/2, 1/2) + (1, -5/2, 2, -1/2) + (-1/2, 0, 1/2, 0)]z +
+[1/8 (-1/2. 3/2. -3/2, 1/2) + 1/4 (1, -5/2, 2, -1/2) +
+ 1/2 (-1/2, 0, 1/2, 0) + (0, 1, 0, 0)] =
+ (-1/2, 3/2, -3/2, 1/2)zzz +
+[(-3/4, 9/4, -9/4, 3/4) + (1, -5/2, 2, -1/2)]zz +
+[(-3/8, 9/8, -9/8, 3/8) + (1, -5/2, 2, -1/2) + (-1/2, 0, 1/2, 0)]z +
+[(-1/16, 3/16, -3/16, 1/16) + (1/4, -5/8, 1/2, -1/8) +
+ (-1/4, 0, 1/4, 0) + (0, 1, 0, 0)] =
+(-1/2, 3/2, -3/2, 1/2)zzz + (1/4, -1/4, -1/4, 1/4)zz +
+(1/8, -11/8, 11/8, -1/8)z + (-1/16, 9/16, 9/16, -1/16) =
